@@ -1,0 +1,155 @@
+/* ========================================
+   404 - PÁGINA NO ENCONTRADA
+======================================== */
+
+.page-404 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.error-404-container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.error-404-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-404-code {
+    font-family: var(--font-serif);
+    font-size: 120px;
+    font-weight: 100;
+    letter-spacing: -3px;
+    color: var(--color-corporative);
+    line-height: 1;
+    margin: 0;
+}
+
+.error-404-title {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 100;
+    letter-spacing: -1px;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.error-404-text {
+    font-family: var(--font-tertiary);
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--color-medium-grey);
+    margin: 0 0 40px 0;
+    letter-spacing: -0.5px;
+    font-weight: 300;
+    max-width: 500px;
+}
+
+.error-404-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.error-404-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-dark);
+}
+
+.error-404-button:hover {
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    /* transform: translateY(-2px); */
+    /* opacity: 0.7; */
+}
+
+.error-404-button .boton-arrow {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+/* .error-404-button:hover .boton-arrow {
+    transform: translateX(3px);
+} */
+
+/* Botón secundario */
+.error-404-button--secondary {
+    background-color: transparent;
+    color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+}
+
+.error-404-button--secondary:hover {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+    .error-404-code {
+        font-size: 80px;
+    }
+    
+    .error-404-title {
+        font-size: 36px;
+    }
+    
+    .error-404-text {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .error-404-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .error-404-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-404-code {
+        font-size: 60px;
+    }
+    
+    .error-404-title {
+        font-size: 28px;
+    }
+    
+    .error-404-text {
+        font-size: 15px;
+    }
+    
+    .error-404-button {
+        padding: 12px 30px;
+        font-size: 13px;
+    }
+}

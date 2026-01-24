@@ -1,0 +1,88 @@
+<div class="mobile-header-wrapper"> <!-- ⭐ SIN el /> al final -->
+    <!-- Top bar -->
+    <div class="mobile-top">
+        <a href="/" class="mobile-logo">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_BH.svg" alt="Bell House">
+        </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span>ME</span>
+            <span>NÚ</span>
+        </button>
+    </div>
+
+    <!-- Menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <!-- Búsqueda - AHORA ES UN BOTÓN -->
+            <button class="mobile-search" id="mobileSearchBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                <span>Buscar</span>
+            </button>
+
+            <!-- Links -->
+            <nav class="mobile-nav">
+                <a href="/nuestros-proyectos/">PROYECTOS</a>
+                <a href="/universo-bell-house/">UNIVERSO BELL HOUSE</a>
+
+                <!-- ⭐ Novedades (solo si tienda visible) -->
+                <?php 
+    $tienda_visible = get_theme_mod('tienda_visible', false);
+    if ($tienda_visible && class_exists('WooCommerce')): 
+    ?>
+                <a href="/novedades/">NOVEDADES</a>
+                <?php endif; ?>
+
+                <!-- ⭐ Tienda con categorías dinámicas -->
+                <?php 
+$tienda_visible = get_theme_mod('tienda_visible', false);
+if ($tienda_visible && class_exists('WooCommerce')): 
+?>
+                <div class="mobile-nav-item-with-sub">
+                    <button class="mobile-nav-toggle">
+                        TIENDA
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu">
+                        <?php
+        $product_categories = get_terms(array(
+            'taxonomy'   => 'product_cat',
+            'hide_empty' => false,
+            'parent'     => 0, // ⭐ Solo categorías padre (nivel superior)
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+            'exclude'    => array(get_option('default_product_cat')),
+        ));
+        
+        if (!empty($product_categories) && !is_wp_error($product_categories)):
+            foreach ($product_categories as $category):
+                if ($category->slug === 'uncategorized') continue;
+                ?>
+                        <a href="<?php echo get_term_link($category); ?>">
+                            <?php echo strtoupper(esc_html($category->name)); ?>
+                        </a>
+                        <?php
+            endforeach;
+        endif;
+        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <a href="/blog/">BLOG</a>
+                <a href="/contacto/">CONTACTO</a>
+            </nav>
+
+            <!-- Logo BH -->
+            <div class="mobile-menu-logo">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_BH.svg" alt="BH">
+            </div>
+        </div>
+    </div>
+</div> <!-- ⭐ CERRAR AQUÍ -->

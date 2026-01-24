@@ -1,0 +1,168 @@
+/*
+Theme Name: Blockbase Child
+Theme URI: https://wordpress.com/theme/blockbase
+Template: blockbase
+Author: Automattic
+Author URI: https://automattic.com/
+Description: Blockbase is a simple theme that supports full-site editing. It comes with a set of minimal templates and design settings that can be manipulated through Global Styles. Use it to build something beautiful.
+Tags: one-column,custom-colors,custom-menu,custom-logo,editor-style,featured-images,full-site-editing,block-patterns,rtl-language-support,theme-options,threaded-comments,translation-ready,wide-blocks,style-variations
+Version: 3.1.21.1767950724
+Updated: 2026-01-09 09:25:24
+
+*/
+
+
+html {
+    overflow-y: scroll; /* Siempre muestra el scrollbar */
+}
+
+
+/* ========================================
+   VARIABLES DE COLOR
+======================================== */
+
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+
+
+
+    /* Colores principales */
+    --color-background: #F5F3F0;
+    --color-light: #FCFAF7;
+    --color-corporative: #D8D7BD;
+    
+    /* Colores del menú */
+    --color-accent: #877865;
+    --color-accent2: #C3BCB0;
+    --color-chocolate: #26120D;
+    --color-dark: #191919;
+    --color-medium-grey: #999999;
+    --color-light-grey: #E9E7E6;
+    
+    /* Fuentes */
+    --font-interactive: 'Sweet Sans Pro', sans-serif;
+    --font-serif: 'Editors Note', serif;
+    --font-texts: 'Acumin', sans-serif;
+}
+
+/* *{
+    background-color: var(--color-background);
+} */
+
+/* Editor's Note - Fuente local */
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Thin-iF664322be7fa2e.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-ThinItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Extralight-if664322be43be3.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Hairline-iF664322be4e4fb.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Light-iF66432BE5B734.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Regular-iF664322be6e849.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-SemiboldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Editors Note';
+    src: url('fonts/EditorsNote-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    overflow-x: hidden;
+
+    overscroll-behavior-y: none;
+
+}
+
+body {
+    background-color: var(--color-background);
+}
+
+main {
+    animation: fadeInPage 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

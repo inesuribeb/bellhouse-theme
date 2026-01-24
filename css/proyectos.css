@@ -1,0 +1,195 @@
+/* ========================================
+   PÁGINA PROYECTOS - LAYOUT
+======================================== */
+
+/* Intro Section */
+.proyectos-intro {
+    padding-top: 35vh;
+    padding-bottom: 8vh;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.proyectos-intro .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.proyectos-intro h1 {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    margin: 0;
+    flex: 0 0 auto;
+    max-width: 40%;
+    font-weight: 100;
+    letter-spacing: -1px;
+    margin-top: -10px;
+}
+
+.proyectos-intro .entry-content,
+.proyectos-intro p {
+    font-family: var(--font-texts);
+    margin-top: 10px;
+    flex: 1;
+    max-width: 50%;
+    font-family: var(--font-texts);
+    font-size: 21px;
+    line-height: 1.1;
+    color: var(--color-dark);
+    letter-spacing: -1px;
+    font-weight: 300;
+}
+
+/* Grid Section */
+.proyectos-grid-section {   
+    padding: 30px 0px 80px;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Grid de Proyectos */
+.grid-proyectos {
+    border-top: 2px solid var(--color-light-grey);
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+/* No proyectos */
+.no-proyectos {
+    text-align: center;
+    padding: 60px 0;
+    font-size: 18px;
+    color: #999;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    /* Intro Section */
+    .proyectos-intro {
+        padding-top: 30vh; /* ⭐ Intermedio */
+        padding-bottom: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .proyectos-intro .container {
+        flex-direction: column; /* ⭐ Layout vertical */
+        gap: 35px;
+    }
+    
+    .proyectos-intro h1 {
+        font-size: 50px;
+        max-width: 100%; /* ⭐ Ancho completo */
+        margin-top: 0;
+    }
+    
+    .proyectos-intro .entry-content,
+    .proyectos-intro p {
+        font-size: 20px;
+        max-width: 100%; /* ⭐ Ancho completo */
+        margin-top: 0;
+        line-height: 1.1;
+    }
+    
+    /* Grid Section */
+    .proyectos-grid-section {
+        padding: 25px 0 70px;
+    }
+    
+    .container {
+        padding: 0 30px; /* ⭐ Más padding que móvil */
+    }
+    
+    .grid-proyectos {
+        padding-top: 35px;
+        gap: 50px;
+    }
+    
+    .no-proyectos {
+        font-size: 17px;
+        padding: 50px 0;
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Intro Section */
+    .proyectos-intro {
+        padding-top: 40vh; /* ⭐ Menos padding-top */
+        padding-bottom: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .proyectos-intro .container {
+        flex-direction: column; /* ⭐ Layout vertical */
+        gap: 30px;
+    }
+    
+    .proyectos-intro h1 {
+        font-size: 46px;
+        max-width: 100%; /* ⭐ Ancho completo */
+        margin-top: 0;
+    }
+    
+    .proyectos-intro .entry-content,
+    .proyectos-intro p {
+        font-size: 18px;
+        max-width: 100%; /* ⭐ Ancho completo */
+        margin-top: 0;
+        line-height: 1.1;
+    }
+    
+    /* Grid Section */
+    .proyectos-grid-section {
+        padding: 20px 0 60px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    .grid-proyectos {
+        padding-top: 30px;
+        gap: 60px;
+    }
+    
+    .no-proyectos {
+        font-size: 16px;
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .proyectos-intro {
+        padding-top: 25vh; /* ⭐ Aún menos en móviles pequeños */
+    }
+    
+    .proyectos-intro h1 {
+        font-size: 38px;
+    }
+    
+    .proyectos-intro .entry-content,
+    .proyectos-intro p {
+        font-size: 16px;
+    }
+    
+    .grid-proyectos {
+        gap: 50px;
+    }
+}

@@ -1,0 +1,34 @@
+<?php
+/**
+ * Template Name: Grid Proyectos
+ * Template Post Type: page
+ */
+
+get_header();
+?>
+
+<main class="page-proyectos">
+    
+    <!-- Intro Section -->
+    <section class="proyectos-intro">
+        <div class="container">
+            <h1><?php the_title(); ?></h1>
+            <?php the_content(); ?>
+        </div>
+    </section>
+
+    <!-- Grid de Proyectos -->
+    <section class="proyectos-grid-section">
+        <div class="container">
+            <?php 
+            echo '<h2>ANTES DE INCLUIR GRID</h2>';
+            include(get_stylesheet_directory() . '/components/grid-proyectos.php'); 
+            echo '<h2>DESPUES DE INCLUIR GRID</h2>';
+            ?>
+        </div>
+    </section>
+
+</main>
+
+<?php
+get_footer();

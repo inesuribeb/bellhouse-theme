@@ -1,0 +1,80 @@
+<!-- ========================================
+     HEADER DESKTOP
+======================================== -->
+<header class="header-desktop">
+    <!-- wp:group {"align":"full","className":"fixed-header","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+    <div class="wp-block-group alignfull fixed-header">
+
+        <!-- Botón MENÚ -->
+        <!-- wp:group {"className":"toggle-button"} -->
+        <div class="wp-block-group toggle-button">
+            <!-- wp:paragraph {"className":"menu-toggle"} -->
+            <p class="menu-toggle">ME<br>NÚ</p>
+            <!-- /wp:paragraph -->
+        </div>
+        <!-- /wp:group -->
+
+        <!-- Logo -->
+        <!-- wp:group {"className":"logo-button"} -->
+        <div class="wp-block-group logo-button">
+            <!-- wp:image {"sizeSlug":"full","linkDestination":"custom"} -->
+            <figure class="wp-block-image size-full">
+                <a href="/">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo_BH.svg" alt="Bell House"
+                        class="custom-logo" />
+                </a>
+            </figure>
+            <!-- /wp:image -->
+        </div>
+        <!-- /wp:group -->
+
+        <!-- Iconos -->
+        <!-- wp:group {"className":"header-icons-wrapper"} -->
+        <div class="wp-block-group header-icons-wrapper">
+            <!-- wp:html -->
+            <?php $tienda_visible = get_theme_mod('tienda_visible', false); ?>
+            <div class="header-icons">
+                <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </span>
+                <?php if ($tienda_visible): ?>
+                <span class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                </span>
+                <?php endif; ?>
+            </div>
+            <!-- /wp:html -->
+        </div>
+        <!-- /wp:group -->
+
+        <!-- Menu Overlay -->
+        <!-- wp:html -->
+        <div class="menu-overlay">
+            [bellhouse_menu]
+        </div>
+        <!-- /wp:html -->
+
+    </div>
+    <!-- /wp:group -->
+
+</header>
+
+<!-- ========================================
+     HEADER MOBILE
+======================================== -->
+<header class="header-mobile">
+    <?php include(get_stylesheet_directory() . '/parts/header-mobile.html'); ?>
+</header>
+
+<!-- ========================================
+     MODAL SEARCH (compartido desktop y mobile)
+======================================== -->
+<?php include(get_stylesheet_directory() . '/parts/modal-search.html'); ?>

@@ -1,0 +1,81 @@
+<?php
+// ========================================
+// ACF FIELDS: PRODUCTOS WOOCOMMERCE
+// ========================================
+
+if (function_exists('acf_add_local_field_group')):
+
+    acf_add_local_field_group(array(
+        'key' => 'group_productos',
+        'title' => 'Información Adicional del Producto',
+        'fields' => array(
+
+            // Imagen Hover
+            array(
+                'key' => 'field_imagen_hover',
+                'label' => 'Imagen Hover',
+                'name' => 'imagen_hover',
+                'type' => 'image',
+                'instructions' => 'Imagen que se muestra al pasar el ratón sobre el producto en listados',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+            ),
+
+            // Imagen PNG Silueteado
+            array(
+                'key' => 'field_imagen_png',
+                'label' => 'Imagen PNG Silueteado',
+                'name' => 'imagen_png',
+                'type' => 'image',
+                'instructions' => 'Imagen del producto sin fondo (PNG transparente)',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+            ),
+
+            // Plazo de Entrega
+            array(
+                'key' => 'field_plazo_entrega',
+                'label' => 'Plazo de Entrega',
+                'name' => 'plazo_entrega',
+                'type' => 'text',
+                'instructions' => 'Ej: 2-3 semanas, 4-6 semanas, Envío inmediato',
+                'placeholder' => '2-3 semanas',
+            ),
+
+            // Ficha Técnica (PDF descargable)
+            array(
+                'key' => 'field_ficha_tecnica',
+                'label' => 'Ficha Técnica (PDF)',
+                'name' => 'ficha_tecnica',
+                'type' => 'file',
+                'instructions' => 'Sube un PDF con las especificaciones técnicas del producto',
+                'return_format' => 'array',
+                'library' => 'all',
+                'mime_types' => 'pdf',
+            ),
+
+                // A Medida (Booleano)
+            array(
+                'key' => 'field_a_medida',
+                'label' => 'Disponible a Medida',
+                'name' => 'a_medida',
+                'type' => 'true_false',
+                'instructions' => 'Marca si este producto se puede fabricar a medida',
+                'message' => 'Este producto está disponible a medida',
+                'default_value' => 0,
+                'ui' => 1,
+            ),
+
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'product',
+                ),
+            ),
+        ),
+    ));
+
+endif;

@@ -1,0 +1,851 @@
+/* ========================================
+   PROYECTOS RECIENTES
+======================================== */
+
+.home-proyectos {
+    background-color: var(--color-background);
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-proyectos .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.proyectos-header {
+    display: flex;
+    gap: 0px;
+    align-items: flex-start;
+    height: 30vh;
+    padding: 0 30px;
+}
+
+.proyectos-header-left {
+    flex: 1;
+}
+
+.proyectos-header-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.proyectos-titulo {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 100;
+    line-height: 0.9;
+    margin: 0;
+    padding-top: 70px;
+}
+
+.proyectos-texto {
+    font-family: var(--font-texts);
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--color-dark);
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 200;
+    padding-top: 80px;
+    padding-left: 20px;
+}
+
+.proyectos-ver-todos {
+    font-family: var(--font-interactive);
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--color-dark);
+    display: inline-flex;
+    align-self: flex-end;
+    gap: 4px;
+    border-bottom: 1px solid var(--color-dark);
+    padding-bottom: 0px;
+    transition: all 0.3s ease;
+    letter-spacing: -0.5px;
+    width: fit-content;
+}
+
+.proyectos-ver-todos:hover {
+    border-bottom-style: dashed;
+}
+
+.boton-arrow-proyectos {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    transition: fill 0.3s ease;
+    align-self: center;
+    transform: translateY(2px);
+}
+
+/* Carousel - 80vh */
+.proyectos-carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: 70vh;
+    padding-left: 20px;
+}
+
+.proyectos-carousel {
+    display: flex;
+    gap: 15px;
+    height: 100%;
+    align-items: center;
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.proyectos-carousel:hover {
+    animation-play-state: paused;
+}
+
+/* Card del carousel - 70vh de alto con aspecto 3:4 */
+.proyecto-carousel-card {
+    height: 70vh;
+    width: calc(70vh * 4 / 5);
+    flex-shrink: 0;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+}
+
+.proyecto-carousel-card__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.proyecto-carousel-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.proyecto-carousel-card:hover .proyecto-carousel-card__image img {
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro */
+.proyecto-carousel-card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
+}
+
+.proyecto-carousel-card:hover .proyecto-carousel-card__overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Info (aparece al hover) */
+.proyecto-carousel-card__info {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    color: var(--color-light);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+    z-index: 2;
+}
+
+.proyecto-carousel-card:hover .proyecto-carousel-card__info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.proyecto-carousel-card__type {
+    font-family: var(--font-texts);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.proyecto-carousel-card__title {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 200;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-proyectos {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    .proyectos-header {
+        flex-direction: column;
+        gap: 25px;
+        height: auto;
+        padding: 0 30px 50px 30px;
+    }
+
+    .proyectos-titulo {
+        font-size: 48px;
+        padding-top: 0;
+    }
+
+    .proyectos-texto {
+        font-size: 19px;
+        padding-top: 0;
+        padding-left: 0;
+    }
+
+    .proyectos-ver-todos {
+        align-self: flex-start;
+        font-size: 14px;
+    }
+
+    /* Carousel tablet */
+    .proyectos-carousel-wrapper {
+        height: auto;
+        padding-left: 30px;
+        padding-bottom: 50px;
+    }
+
+    .proyectos-carousel {
+        gap: 15px;
+        height: auto;
+    }
+
+    /* Cards tablet - ratio 4/5 */
+    .proyecto-carousel-card {
+        height: auto;
+        width: 60vw; /* ⭐ Más grande que móvil */
+    }
+
+    .proyecto-carousel-card__image {
+        aspect-ratio: 4/5;
+        height: auto;
+    }
+
+    /* ⭐ Overlay siempre visible en tablet */
+    .proyecto-carousel-card__overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* ⭐ Info siempre visible en tablet */
+    .proyecto-carousel-card__info {
+        opacity: 1;
+        transform: translateY(0);
+        bottom: 25px;
+        left: 25px;
+        right: 25px;
+    }
+
+    .proyecto-carousel-card__type {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .proyecto-carousel-card__title {
+        font-size: 26px;
+    }
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-proyectos {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .proyectos-header {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        padding: 0 20px 40px 20px;
+    }
+
+    .proyectos-titulo {
+        font-size: 36px;
+        padding-top: 0;
+    }
+
+    .proyectos-texto {
+        font-size: 18px;
+        padding-top: 0;
+        padding-left: 0;
+    }
+
+    .proyectos-ver-todos {
+        align-self: flex-start;
+        font-size: 14px;
+    }
+
+    /* Carousel móvil */
+    .proyectos-carousel-wrapper {
+        height: auto;
+        padding-left: 20px;
+        padding-bottom: 40px;
+    }
+
+    .proyectos-carousel {
+        gap: 15px;
+        height: auto;
+    }
+
+    /* Cards móvil - ratio 4/5 */
+    .proyecto-carousel-card {
+        height: auto;
+        width: 70vw;
+        /* ⭐ Ancho basado en viewport */
+    }
+
+    .proyecto-carousel-card__image {
+        aspect-ratio: 4/5;
+        /* ⭐ Proporción vertical */
+        height: auto;
+    }
+
+    /* ⭐ Overlay siempre visible en móvil */
+    .proyecto-carousel-card__overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* ⭐ Info siempre visible en móvil */
+    .proyecto-carousel-card__info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .proyecto-carousel-card__type {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .proyecto-carousel-card__title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .proyectos-titulo {
+        font-size: 32px;
+    }
+
+    .proyectos-texto {
+        font-size: 16px;
+    }
+
+    .proyecto-carousel-card {
+        width: 75vw;
+        /* ⭐ Más ancho en móviles pequeños */
+    }
+
+    .proyecto-carousel-card__type {
+        font-size: 10px;
+        margin-bottom: 8px;
+        /* text-transform: none; */
+    }
+
+    .proyecto-carousel-card__title {
+        font-size: 34px;
+    }
+}
+
+
+
+
+/* ========================================
+   NOVEDADES
+======================================== */
+.home-novedades-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.espacio-vacio {
+    height: 20vh;
+}
+
+
+.home-novedades {
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.novedades-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.novedades-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+/* Overlay oscuro */
+.novedades-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Ajusta el 0.4 para más o menos oscuridad */
+    z-index: 1;
+}
+
+.novedades-link:hover .novedades-background {
+    transform: scale(1.02);
+}
+
+.novedades-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.novedades-label {
+    font-family: var(--font-texts);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--color-medium-grey);
+    margin-bottom: 0px;
+    display: block;
+}
+
+.novedades-titulo {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 100;
+    line-height: 0.9;
+    margin: 0;
+    width: 40%;
+    color: var(--color-light);
+}
+
+/* Sin efectos hover cuando no hay enlace */
+.novedades-link--no-link {
+    cursor: default;
+}
+
+.novedades-link--no-link:hover .novedades-background {
+    transform: none;
+    /* Sin zoom cuando no hay enlace */
+}
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-novedades {
+        height: 100vh;
+        padding: 0; /* ⭐ A sangre también en tablet */
+    }
+
+    .novedades-content {
+        padding-top: 90px;
+    }
+
+    .novedades-label {
+        font-size: 15px;
+    }
+
+    .novedades-titulo {
+        font-size: 48px;
+        width: 60%; /* ⭐ Más ancho que desktop, más estrecho que móvil */
+        line-height: 0.95;
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-novedades {
+        height: 100vh;
+        /* ⭐ Mantiene 100vh */
+        padding: 0;
+        /* ⭐ A sangre (sin padding) */
+    }
+
+    .novedades-content {
+        padding-top: 100px;
+    }
+
+    .novedades-label {
+        font-size: 14px;
+    }
+
+    .novedades-titulo {
+        font-size: 36px;
+        width: 80%;
+        /* ⭐ Más ancho en móvil */
+        line-height: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .novedades-content {
+        padding-top: 80px;
+    }
+
+    .novedades-titulo {
+        font-size: 32px;
+        width: 85%;
+        /* ⭐ Aún más ancho en móviles pequeños */
+    }
+}
+
+/* ========================================
+   UNIVERSO BELL HOUSE
+======================================== */
+
+.home-universo {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.universo-link {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+.universo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* gap: 30px; */
+}
+
+.universo-label {
+    font-family: var(--font-texts);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--color-medium-grey);
+    display: block;
+}
+
+.universo-titulo {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 100;
+    line-height: 0.9;
+    margin: 0;
+    max-width: 800px;
+    color: var(--color-dark);
+    padding-bottom: 50px;
+}
+
+.universo-imagen {
+    position: relative;
+    width: 20%;
+    /* max-width: 300px; */
+    aspect-ratio: 4/5;
+    overflow: hidden;
+}
+
+/* ⭐ OVERLAY OSCURO */
+.universo-imagen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* ⭐ Transparente por defecto */
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+/* ⭐ OVERLAY AL HOVER */
+.universo-link:hover .universo-imagen::before {
+    background-color: rgba(0, 0, 0, 0.3); /* ⭐ 30% negro */
+}
+
+.universo-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.universo-link:hover .universo-imagen img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-universo {
+        height: auto;
+        min-height: 80vh; /* ⭐ Altura mínima flexible */
+        padding: 60px 0;
+    }
+
+    .universo-link {
+        padding: 30px;
+    }
+
+    .universo-content {
+        gap: 25px;
+    }
+
+    .universo-label {
+        font-size: 15px;
+    }
+
+    .universo-titulo {
+        font-size: 48px;
+        padding-bottom: 40px;
+        max-width: 90%;
+        line-height: 0.95;
+    }
+
+    .universo-imagen {
+        width: 35%; /* ⭐ Intermedio entre desktop (20%) y móvil (50%) */
+        max-width: none;
+        aspect-ratio: 4/5;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-universo {
+        min-height: 70vh;
+        /* ⭐ Sin limitación de altura */
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        padding: 0px 0;
+    }
+
+    .universo-link {
+        padding: 20px;
+    }
+
+    .universo-content {
+        gap: 20px;
+    }
+
+    .universo-label {
+        font-size: 14px;
+    }
+
+    .universo-titulo {
+        font-size: 36px;
+        padding-bottom: 30px;
+        max-width: 100%;
+        line-height: 1;
+    }
+
+    .universo-imagen {
+        width: 50%;
+        /* ⭐ Más ancho en móvil */
+        max-width: none;
+        aspect-ratio: 4/5;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-universo {
+        padding: 0px 0;
+    }
+
+    .universo-titulo {
+        font-size: 32px;
+    }
+
+    .universo-imagen {
+        width: 50%;
+        /* ⭐ Aún más ancho en móviles pequeños */
+    }
+}
+
+
+/* ========================================
+   VIDEO
+======================================== */
+
+.home-video {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-video {
+        height: 100vh; /* ⭐ Mantiene altura completa */
+        padding: 0; /* ⭐ A sangre */
+        margin: 0;
+    }
+
+    .video-background {
+        object-fit: cover;
+    }
+}
+
+/* ========================================
+   RESPONSIVE MÓVIL
+======================================== */
+
+@media (max-width: 768px) {
+    .home-video {
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    .video-background {
+        object-fit: cover;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-video {
+        height: 100vh;
+        /* ⭐ Mantiene altura completa */
+        padding: 0;
+        /* ⭐ A sangre */
+        margin: 0;
+    }
+
+    .video-background {
+        object-fit: cover;
+        /* ⭐ Asegura que el video cubra toda el área */
+    }
+}
+
+
+
+
+
+
+/* ========================================
+   CONTACTO
+======================================== */
+
+.home-contacto {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacto-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacto-titulo {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 100;
+    line-height: 0.9;
+    margin: 0;
+    color: var(--color-dark);
+    transition: color 0.3s ease;
+}
+
+.contacto-link:hover .contacto-titulo {
+    color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-contacto {
+        height: 40vh; /* ⭐ Menos altura en móvil */
+        padding: 0 20px; /* ⭐ Padding lateral */
+    }
+    
+    .contacto-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .contacto-titulo {
+        font-size: 36px;
+        line-height: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-contacto {
+        height: 30vh; /* ⭐ Aún menos en móviles pequeños */
+    }
+    
+    .contacto-titulo {
+        font-size: 32px;
+    }
+}

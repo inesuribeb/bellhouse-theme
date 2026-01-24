@@ -1,0 +1,582 @@
+/* ========================================
+   PORTADA
+======================================== */
+
+.home-portada {
+    position: relative;
+    height: 100vh;
+    max-height: 100vh; /* Fuerza altura máxima */
+    overflow: hidden; /* Evita scroll interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Título */
+.portada-titulo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 2;
+    text-align: center;
+}
+
+.portada-titulo h1 {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    color: var(--color-light);
+    margin: 0;
+    line-height: 1;
+    font-weight: 100;
+    background-color: transparent !important;
+}
+
+/* Cards */
+.portada-cards {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.portada-card {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start; /* pega al inicio */
+    padding: 40px;
+}
+
+.portada-card__text {
+    margin-top: 55vh; /* aquí controlas la altura */
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--color-light);
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+/* Card izquierda (Tienda) - flex-end */
+.portada-card--left {
+    justify-content: flex-end;
+}
+
+/* Card derecha (Inspírate) - flex-start */
+.portada-card--right {
+    justify-content: flex-start;
+}
+
+.portada-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.portada-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* .portada-card:hover .portada-card__image img {
+    transform: scale(1.05);
+} */
+
+.portada-card__text {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: white;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .portada-cards {
+        flex-direction: column;
+    }
+    
+    .portada-card {
+        height: 50vh; /* Cada card ocupa la mitad */
+    }
+    
+    .portada-card__text {
+        margin-top: 35vh; /* Ajustar posición del texto */
+    }
+    
+    .portada-titulo h1 {
+        font-size: 48px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .portada-cards {
+        flex-direction: column;
+    }
+    
+    .portada-titulo h1 {
+        font-size: 36px;
+    }
+}
+
+
+/* ========================================
+   PORTADA SIN TIENDA (Fullscreen)
+======================================== */
+
+.home-portada--fullscreen {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ⭐ Overlay oscuro sobre el fondo */
+.home-portada--fullscreen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* ⭐ Negro al 40% de opacidad */
+    z-index: 1;
+}
+
+/* Video de fondo */
+.portada-fondo-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.portada-fondo-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ⭐ IMPORTANTE: Sobrescribir estilos del título para fullscreen */
+.home-portada--fullscreen .portada-titulo {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: 2; /* ⭐ Por encima del overlay */
+    text-align: center;
+}
+
+.home-portada--fullscreen .portada-titulo h1 {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    color: var(--color-light);
+    margin: 0;
+    line-height: 1;
+    font-weight: 100;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-portada--fullscreen .portada-titulo h1 {
+        font-size: 48px;
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-portada--fullscreen .portada-titulo h1 {
+        font-size: 36px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ========================================
+   INTRO
+======================================== */
+
+.home-intro {
+    background-color: var(--color-background);
+    padding: 0px 0;
+    height: 100vh;
+}
+
+.intro-content {
+    display: flex;
+    gap: 0px;
+    height: 100vh;
+}
+
+.intro-left {
+    height: 100%;
+    flex: 0 0 50%; 
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 10px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+}
+
+.intro-label {
+    font-family: var(--font-texts);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--color-medium-grey);
+}
+
+.intro-titulo {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 200;
+    line-height: 0.9;
+    margin: 0;
+    width: 70%;
+    padding-bottom: 20px;
+}
+
+.intro-texto {
+    font-family: var(--font-texts);
+    font-size: 20px;
+    line-height: 1.1;
+    color: var(--color-dark);
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: -1px;
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+.intro-boton {
+    font-family: var(--font-interactive);
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--color-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-bottom: 1px solid var(--color-dark);
+    padding-bottom: 0px;
+    transition: all 0.3s ease;
+    letter-spacing: -0.5px;
+    margin-top: 40px;
+    width: fit-content;
+}
+
+.intro-boton:hover {
+    border-bottom-style: dashed;
+}
+
+.boton-arrow {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    transition: fill 0.3s ease;
+    transform: translateY(2px);
+}
+
+.intro-servicios {
+    list-style: none;
+    padding: 0;
+    margin: 0px 0 0 0;
+}
+
+.servicio-item {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    padding: 0px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding: 0px 0; 
+    margin: -7px 0; 
+}
+
+.servicio-item:hover,
+.servicio-item.active {
+    color: var(--color-accent);
+}
+
+.servicio-arrow {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.servicio-arrow svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--color-dark);
+    transition: fill 0.3s ease;
+}
+
+.servicio-item:hover .servicio-arrow svg,
+.servicio-item.active .servicio-arrow svg {
+    fill: var(--color-accent);
+}
+
+.servicio-nombre {
+    margin-left: 15px;
+    font-family: var(--font-texts);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+
+.intro-right {
+    flex: 0 0 50%;
+    display: flex;
+}
+
+.intro-imagen-container {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+}
+
+.intro-imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.intro-imagen.active {
+    opacity: 1;
+}
+
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-intro {
+        height: auto;
+        padding: 60px 0;
+    }
+    
+    .intro-content {
+        flex-direction: column;
+        height: auto;
+        gap: 0px;
+    }
+    
+    .intro-left {
+        flex: 1;
+        padding: 30px;
+        gap: 15px;
+    }
+    
+    .intro-label {
+        font-size: 15px;
+    }
+    
+    .intro-titulo {
+        font-size: 48px;
+        width: 80%;
+        padding-bottom: 20px;
+    }
+    
+    .intro-texto {
+        font-size: 19px;
+        width: 80%;
+        margin-bottom: 20px;
+        line-height: 1.1;
+    }
+    
+    .intro-boton {
+        font-size: 14px;
+        margin-top: 30px;
+    }
+    
+    .intro-servicios {
+        margin-top: 20px;
+    }
+    
+    .servicio-item {
+        padding: 0px 0;
+        margin: -6px 0;
+    }
+    
+    .servicio-arrow {
+        width: 55px;
+        height: 28px;
+    }
+    
+    .servicio-nombre {
+        font-size: 20px;
+        margin-left: 12px;
+    }
+    
+    /* Imágenes con ratio 4/5 */
+    .intro-right {
+        flex: 1;
+        width: 100%;
+    }
+    
+    .intro-imagen-container {
+        width: 100%;
+        aspect-ratio: 4/5;
+        height: auto;
+    }
+    
+    .intro-imagen {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-intro {
+        height: auto; /* ⭐ Sin limitación de altura */
+        padding: 40px 0;
+    }
+    
+    .intro-content {
+        flex-direction: column;
+        height: auto; /* ⭐ Sin limitación de altura */
+        gap: 0px;
+    }
+    
+    .intro-left {
+        flex: 1;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .intro-label {
+        font-size: 14px;
+    }
+    
+    .intro-titulo {
+        font-size: 36px;
+        width: 100%; /* ⭐ Ancho completo */
+        padding-bottom: 15px;
+    }
+    
+    .intro-texto {
+        font-size: 18px;
+        width: 75%; /* ⭐ Ancho completo */
+        margin-bottom: 0px;
+        line-height: 1.1;
+    }
+    
+    .intro-boton {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+    
+    .intro-servicios {
+        margin-top: 0px;
+    }
+    
+    .servicio-item {
+        padding: 0px 0;
+        margin: -5px 0;
+    }
+    
+    .servicio-arrow {
+        width: 50px;
+        height: 25px;
+    }
+    
+    .servicio-nombre {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    
+    /* ⭐ Imágenes con ratio 4/5 */
+    .intro-right {
+        flex: 1;
+        width: 100%;
+    }
+    
+    .intro-imagen-container {
+        width: 100%;
+        aspect-ratio: 4/5; /* ⭐ Proporción vertical */
+        height: auto;
+    }
+    
+    .intro-imagen {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* ⭐ Móvil muy pequeño (opcional) */
+@media (max-width: 480px) {
+    .intro-titulo {
+        font-size: 32px;
+    }
+    
+    .intro-texto {
+        font-size: 16px;
+    }
+    
+    .servicio-nombre {
+        font-size: 16px;
+    }
+    
+    .intro-right {
+        min-height: 300px;
+    }
+    
+    /* ⭐ Mantiene el ratio 4/5 */
+    .intro-imagen-container {
+        aspect-ratio: 4/5;
+    }
+}

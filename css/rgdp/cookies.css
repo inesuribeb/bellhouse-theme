@@ -1,0 +1,158 @@
+/* ========================================
+   POLÍTICA DE COOKIES
+======================================== */
+
+.page-cookies {
+    padding: 35vh 20px 100px;
+    min-height: 100vh;
+}
+
+.cookies-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cookies-container h1 {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    font-weight: 100;
+    letter-spacing: -1px;
+    color: var(--color-dark);
+    margin: 0 0 60px 0;
+}
+
+.cookies-content h2 {
+    font-family: var(--font-texts);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--color-dark);
+    margin: 40px 0 20px 0;
+}
+
+.cookies-content h3 {
+    font-family: var(--font-texts);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--color-dark);
+    margin: 30px 0 15px 0;
+}
+
+.cookies-content p {
+    font-family: var(--font-tertiary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-dark);
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+    font-weight: 300;
+}
+
+.cookies-content ul {
+    font-family: var(--font-tertiary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-dark);
+    margin: 0 0 20px 0;
+    padding-left: 30px;
+    letter-spacing: -0.5px;
+    font-weight: 300;
+}
+
+.cookies-content ul li {
+    margin-bottom: 10px;
+}
+
+.cookies-content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.cookies-content strong {
+    font-weight: 500;
+}
+
+/* Tabla de cookies (si la usas) */
+.cookies-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: var(--font-tertiary);
+    font-size: 15px;
+}
+
+.cookies-content table th {
+    background-color: var(--color-corporative);
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+    border: 1px solid var(--color-light-grey);
+}
+
+.cookies-content table td {
+    padding: 12px;
+    border: 1px solid var(--color-light-grey);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+    .page-cookies {
+        padding: 25vh 20px 80px;
+    }
+    
+    .cookies-container h1 {
+        font-size: 38px;
+        margin-bottom: 40px;
+    }
+    
+    .cookies-content h2 {
+        font-size: 20px;
+        margin: 30px 0 15px 0;
+    }
+    
+    .cookies-content h3 {
+        font-size: 18px;
+        margin: 25px 0 12px 0;
+    }
+    
+    .cookies-content p,
+    .cookies-content ul {
+        font-size: 15px;
+    }
+    
+    .cookies-content table {
+        font-size: 14px;
+    }
+    
+    .cookies-content table th,
+    .cookies-content table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookies-container h1 {
+        font-size: 32px;
+    }
+    
+    .cookies-content h2 {
+        font-size: 18px;
+    }
+    
+    .cookies-content h3 {
+        font-size: 16px;
+    }
+    
+    .cookies-content p,
+    .cookies-content ul {
+        font-size: 14px;
+    }
+    
+    .cookies-content table {
+        font-size: 13px;
+    }
+}

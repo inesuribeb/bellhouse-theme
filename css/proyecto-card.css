@@ -1,0 +1,423 @@
+/* ========================================
+   PROYECTO CARD
+======================================== */
+
+/* Card Individual */
+.proyecto-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* height: 400px;  */
+    height: 70vh;
+    gap: 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.proyecto-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Imagen */
+.proyecto-card__image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* pega la imagen a la derecha */
+    align-items: center;
+    height: 100%;
+
+    overflow: hidden;
+    position: relative;
+}
+
+/* Vertical: 3:4 (impares: 1, 3, 5...) */
+.proyecto-card.vertical .proyecto-card__image img {
+    aspect-ratio: 4/5;
+    height: 100%;
+    width: auto;
+
+    position: absolute;
+    right: 0;
+}
+
+/* Horizontal: 4:3 (pares: 2, 4, 6...) */
+.proyecto-card.horizontal .proyecto-card__image img {
+    aspect-ratio: 5/4;
+    height: 100%;
+    width: auto;
+
+    position: absolute;
+    right: 0;
+}
+
+.proyecto-card__image img {
+    object-fit: cover;
+
+
+    /* transition: transform 0.3s ease; */
+    transform: scale(1);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: left center;
+}
+
+/* ⭐ Hover: zoom sutil */
+.proyecto-card:hover .proyecto-card__image img {
+    transform: scale(1.02);
+}
+
+/* Placeholder si no hay imagen */
+.placeholder-image {
+    height: 100%;
+    background-color: var(--color-corporative);
+}
+
+.proyecto-card.vertical .placeholder-image {
+    aspect-ratio: 3/4;
+    width: auto;
+}
+
+.proyecto-card.horizontal .placeholder-image {
+    aspect-ratio: 4/3;
+    width: auto;
+}
+
+/* Info */
+.proyecto-card__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+}
+
+.proyecto-card__type {
+    font-family: var(--font-texts);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+}
+
+.proyecto-card__title {
+    font-family: var(--font-texts);
+    font-size: 40px;
+    margin: 0 0 40px 0;
+    line-height: 1;
+    letter-spacing: -1.2px;
+    color: var(--color-dark);
+    font-weight: 350;
+    width: 70%;
+}
+
+.proyecto-card__description {
+    font-family: var(--font-tertiary);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--color-dark);
+    margin: 0;
+    letter-spacing: -1px;
+    font-weight: 300;
+    width: 60%;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Pantallas grandes (escritorio) */
+/* @media (min-width: 1441px) {
+    .proyecto-card {
+        height: 65vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .proyecto-card {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .proyecto-card {
+        height: 60vh;
+        gap: 25px;
+    }
+    
+    .proyecto-card__title {
+        font-size: 28px;
+        margin: 0 0 20px 0;
+    }
+    
+    .proyecto-card__description {
+        font-size: 14px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .proyecto-card {
+        height: 55vh;
+        gap: 20px;
+    }
+    
+    .proyecto-card__title {
+        font-size: 26px;
+    }
+    
+    .proyecto-card__type {
+        font-size: 12px;
+    }
+} */
+
+
+/* Tablet horizontal */
+/* Tablet horizontal */
+@media (max-width: 1024px) {
+    .proyecto-card {
+        flex-direction: column; /* ⭐ Layout vertical como móvil */
+        height: auto;
+        gap: 15px;
+    }
+    
+    .proyecto-card__image {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* ⭐ Mantener proporciones originales en tablet */
+    .proyecto-card__image img,
+    .proyecto-card.vertical .proyecto-card__image img,
+    .proyecto-card.horizontal .proyecto-card__image img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Vertical: 4/5 */
+    .proyecto-card.vertical .proyecto-card__image img {
+        aspect-ratio: 4/5 !important;
+    }
+    
+    /* Horizontal: 5/4 */
+    .proyecto-card.horizontal .proyecto-card__image img {
+        aspect-ratio: 5/4 !important;
+    }
+    
+    /* ⭐ Placeholder también con sus ratios originales */
+    .placeholder-image {
+        width: 100%;
+        height: auto;
+    }
+    
+    .proyecto-card.vertical .placeholder-image {
+        aspect-ratio: 4/5 !important;
+    }
+    
+    .proyecto-card.horizontal .placeholder-image {
+        aspect-ratio: 5/4 !important;
+    }
+    
+    .proyecto-card__info {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* ⭐ Ocultar descripción en tablet */
+    .proyecto-card__description {
+        display: none;
+    }
+
+    .proyecto-card__type {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .proyecto-card__title {
+        font-size: 32px;
+        margin: 0 0 12px 0;
+    }
+}
+
+
+/* Tablet vertical / móvil horizontal */
+@media (max-width: 768px) {
+    .proyecto-card {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+    }
+    
+    .proyecto-card__image {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* ⭐ Todas las imágenes con ratio 4/5 en móvil */
+    .proyecto-card__image img,
+    .proyecto-card.vertical .proyecto-card__image img,
+    .proyecto-card.horizontal .proyecto-card__image img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/5 !important; /* ⭐ Forzar ratio 4/5 para todas */
+        position: relative !important; /* ⭐ AÑADIR ESTO */
+        right: auto !important; /* ⭐ Y ESTO */
+    }
+    
+    /* ⭐ Placeholder también 4/5 */
+    .placeholder-image,
+    .proyecto-card.vertical .placeholder-image,
+    .proyecto-card.horizontal .placeholder-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/5 !important;
+    }
+    
+    .proyecto-card__info {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* ⭐ Ocultar descripción en móvil */
+    .proyecto-card__description {
+        display: none;
+    }
+
+    .proyecto-card__type {
+        margin-bottom: 5px; /* ⭐ Menos espacio entre type y título */
+    }
+    
+    .proyecto-card__title {
+        font-size: 28px;
+        margin: 0 0 10px 0; /* ⭐ Menos margen ya que no hay descripción */
+    }
+}
+
+/* Móvil grande */
+@media (max-width: 480px) {
+    .proyecto-card {
+        gap: 10px;
+    }
+    
+    .proyecto-card__title {
+        font-size: 24px;
+        margin: 0 0 10px 0;
+    }
+    
+    .proyecto-card__type {
+        font-size: 11px;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 375px) {
+    .proyecto-card__title {
+        font-size: 22px;
+    }
+}
+
+
+
+
+
+
+/* ========================================
+   CTA FORM CARD (extensión de proyecto-card)
+======================================== */
+
+.proyecto-cta-form {
+    cursor: default; /* ⭐ No es clickable */
+    pointer-events: none; /* ⭐ Evitar hover */
+}
+
+.proyecto-cta-form .proyecto-card__info {
+    pointer-events: auto; /* ⭐ Reactivar en el contenido */
+}
+
+/* Texto adicional del CTA */
+.proyecto-cta-form__text {
+    font-family: var(--font-tertiary);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--color-dark);
+    margin: 0 0 30px 0;
+    letter-spacing: -1px;
+    font-weight: 300;
+    width: 60%;
+}
+
+/* Botón del CTA */
+/* .proyecto-cta-form__button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.proyecto-cta-form__button:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
+} */
+
+.proyecto-cta-form__button {
+    font-family: var(--font-interactive);
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--color-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-bottom: 1px solid var(--color-dark);
+    padding-bottom: 0px;
+    transition: all 0.3s ease;
+    letter-spacing: -0.5px;
+    width: fit-content;
+}
+
+.proyecto-cta-form__button:hover {
+    border-bottom-style: dashed;
+}
+
+.boton-arrow {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    transition: fill 0.3s ease;
+    transform: translateY(2px);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+    .proyecto-cta-form__text {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .proyecto-cta-form__text {
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .proyecto-cta-form__button {
+        width: 100%; /* ⭐ Botón full-width en móvil */
+        text-align: center;
+    }
+}

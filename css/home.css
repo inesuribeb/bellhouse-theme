@@ -1,0 +1,63 @@
+/* ========================================
+   HOME - LAYOUT GENERAL
+======================================== */
+
+.page-home {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 0 !important; 
+}
+
+body.home {
+    padding-top: 0 !important;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+}
+
+/* Secciones generales */
+section {
+    width: 100%;
+}
+
+/* .home-portada,
+.home-intro,
+.home-proyectos,
+.home-novedades,
+.home-tienda,
+.home-universo,
+.home-video {
+    height: 100vh;
+} */
+
+.home-universo {
+    background-color: var(--color-corporative) !important;
+}
+
+.espacio-vacio {
+    height: 20vh;
+}
+
+.espacio-vacio-menor {
+    height: 5vh;
+}
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .espacio-vacio,
+    .espacio-vacio-menor {
+        display: none;
+    }
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+    .espacio-vacio,
+    .espacio-vacio-menor {
+        display: none;
+    }
+}

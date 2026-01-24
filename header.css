@@ -1,0 +1,430 @@
+/* ========================================
+   HEADER BELLHOUSE
+======================================== */
+
+.fixed-header.alignfull {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.fixed-header .wp-block-group {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Header fijo */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color-background);
+    padding: 20px 30px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    box-sizing: border-box !important;
+}
+
+/* Forzar padding en páginas de WooCommerce y Blog */
+body.woocommerce .fixed-header,
+body.blog .fixed-header,
+body.single-post .fixed-header {
+    padding: 20px 30px !important;
+}
+
+
+/* Toggle button (MENÚ) - izquierda */
+.toggle-button {
+    flex: 0 0 auto;
+    z-index: 1002;
+}
+
+.menu-toggle {
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    color: var(--color-dark);
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--color-accent) !important;
+}
+
+/* Logo centro - POSICIÓN ABSOLUTA */
+.logo-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1002;
+}
+
+.custom-logo {
+    height: 30px !important;
+    width: auto !important;
+    max-width: none !important;
+    display: block !important;
+    margin: 0 auto;
+}
+
+.logo-button figure {
+    margin: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+.logo-button a {
+    display: inline-block !important;
+    line-height: 0;
+}
+
+/* Iconos derecha */
+.header-icons-wrapper {
+    flex: 0 0 auto;
+    z-index: 1002;
+    margin-left: auto;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    align-items: center;
+}
+
+.header-icons span {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-icons svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    transition: all 0.3s ease;
+}
+
+.header-icons span:hover svg {
+    /* opacity: 0.6; */
+    color: var(--color-accent);
+}
+
+/* ========================================
+   MENU OVERLAY (dentro del header)
+======================================== */
+
+.menu-overlay {
+    position: absolute;
+    top: 100%;
+    /* justo debajo del header */
+    left: 0;
+    right: 0;
+    /* height: calc(100vh - 100%); */
+    height: auto;
+    background: var(--color-background);
+    z-index: 1001;
+    display: none;
+    padding: 20px 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Grid de tarjetas */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+/* Tarjeta individual */
+.menu-card {
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fondo de color (imagen) */
+.menu-card-bg {
+    width: 100%;
+    aspect-ratio: 4/5;
+    transition: opacity 0.3s ease;
+}
+
+.menu-card:hover .menu-card-bg {
+    opacity: 0.9;
+}
+
+/* Título DEBAJO de la imagen */
+.menu-card-title {
+    font-family: 'Sweet Sans Pro', sans-serif;
+    font-size: 15px;
+    color: var(--color-dark);
+    font-weight: 500;
+    padding: 10px 0;
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Header transparente en home/portada */
+.header-transparent {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+.header-transparent .menu-toggle,
+.header-transparent .header-icons span {
+    color: var(--color-light) !important;
+    transition: color 0.3s ease;
+}
+
+/* HOVER en header transparente → vuelve a normal */
+.header-transparent:hover {
+    background-color: var(--color-background) !important;
+}
+
+.header-transparent:hover .menu-toggle,
+.header-transparent:hover .header-icons span {
+    color: var(--color-dark) !important;
+}
+
+.header-transparent:hover .custom-logo {
+    filter: none !important;
+    /* Logo vuelve a color original */
+}
+
+/* Hover individual en elementos */
+.header-transparent .menu-toggle:hover {
+    color: var(--color-corporative) !important;
+}
+
+.header-transparent .header-icons span:hover {
+    opacity: 0.7;
+}
+
+/* Logo en blanco cuando transparente (sin hover) */
+.header-transparent .custom-logo {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+
+
+
+
+
+
+
+/* Header sobre Universo Bell House - TRANSPARENTE */
+.header-over-universo {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+.header-over-universo .menu-toggle,
+.header-over-universo .header-icons span {
+    color: var(--color-dark) !important;
+}
+
+.header-over-universo .custom-logo {
+    filter: none !important;
+}
+
+/* HOVER en header sobre universo → fondo corporativo */
+.header-over-universo:hover {
+    background-color: var(--color-corporative) !important;
+}
+
+/* Menu overlay con fondo corporativo (siempre) */
+.header-over-universo .menu-overlay {
+    background: var(--color-corporative) !important;
+}
+
+
+
+
+
+
+
+/* Header sobre CTA Video - TRANSPARENTE (texto oscuro) */
+.header-over-video {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+.header-over-video .menu-toggle,
+.header-over-video .header-icons span {
+    color: var(--color-dark) !important;
+}
+
+.header-over-video .custom-logo {
+    filter: none !important;
+}
+
+/* HOVER en header sobre video → fondo normal */
+.header-over-video:hover {
+    background-color: var(--color-background) !important;
+}
+
+/* Menu overlay con fondo normal (siempre) */
+.header-over-video .menu-overlay {
+    background: var(--color-background) !important;
+}
+
+
+
+
+
+
+
+
+/* Header oculto en footer */
+.header-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+.header-mobile {
+    display: none;
+}
+
+
+
+
+
+/* ========================================
+   LAYOUT SIN TIENDA (4 cards)
+======================================== */
+
+.menu-grid-no-tienda {
+    display: flex;
+    gap: 15px;
+    height: 55vh; /* Altura fija para todas */
+    align-items: stretch; /* Todas ocupan la misma altura */
+}
+
+/* Cards normales (Proyectos, Blog, Contacto) */
+.menu-grid-no-tienda .menu-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-grid-no-tienda .menu-card .menu-card-bg {
+    width: calc((55vh - 40px) * 0.8);
+    height: calc(55vh - 40px);
+    flex-shrink: 0;
+}
+
+/* Universo Bell House (2º elemento) - se adapta al espacio */
+.menu-grid-no-tienda .menu-card:nth-child(2) {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.menu-grid-no-tienda .menu-card:nth-child(2) .menu-card-bg {
+    width: 100%;
+    height: calc(55vh - 40px);
+}
+
+/* Títulos */
+.menu-grid-no-tienda .menu-card-title {
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+/* ⭐ Media query para pantallas medianas */
+@media (max-width: 1550px) {
+    .menu-grid-no-tienda {
+        height: 380px;
+    }
+    
+    .menu-grid-no-tienda .menu-card .menu-card-bg {
+        width: calc((380px - 40px) * 0.8);
+        height: calc(380px - 40px);
+    }
+    
+    .menu-grid-no-tienda .menu-card:nth-child(2) .menu-card-bg {
+        height: calc(380px - 40px);
+    }
+}
+
+/* En móvil: desktop oculto, mobile visible */
+@media (max-width: 1024px) {
+    .header-desktop {
+        display: none;
+    }
+    
+    .header-mobile {
+        display: block;
+    }
+}
+
+/* Responsive móvil */
+@media (max-width: 768px) {
+    .menu-grid-no-tienda {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .menu-grid-no-tienda .menu-card {
+        width: 100%;
+    }
+    
+    .menu-grid-no-tienda .menu-card .menu-card-bg {
+        width: 100%;
+        aspect-ratio: 4/5;
+        height: auto;
+    }
+    
+    .menu-grid-no-tienda .menu-card:nth-child(2) .menu-card-bg {
+        width: 100%;
+        aspect-ratio: 4/5;
+        height: auto;
+    }
+}

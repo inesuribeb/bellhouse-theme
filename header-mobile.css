@@ -1,0 +1,349 @@
+/* ========================================
+   HEADER MOBILE - Ocultar por defecto
+======================================== */
+/* Solo ocultarla visualmente */
+#wpadminbar {
+    display: none !important;
+}
+
+/* Mostrar solo en móvil/tablet */
+@media (max-width: 1024px) {
+    .header-mobile {
+        display: block;
+    }
+}
+
+/* ========================================
+   ESTILOS DEL HEADER MOBILE
+======================================== */
+
+@media (max-width: 1024px) {
+    .mobile-header-wrapper {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 99999 !important;
+        background-color: var(--color-background);
+    }
+
+    /* Top bar */
+    .mobile-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center !important;
+        padding: 20px;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .mobile-logo {
+        display: block;
+    }
+    
+    .mobile-logo img {
+        height: 22px;
+        display: block;
+    }
+
+    .mobile-menu-toggle {
+        background: transparent;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        cursor: pointer;
+        font-family: var(--font-interactive);
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        padding-right: 0px;
+        /* align-self: right; */
+    }
+
+    /* Menu overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-background);
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .mobile-menu-overlay.active {
+        transform: translateX(0);
+    }
+
+    .mobile-menu-content {
+        height: 100vh;
+        padding: 80px 20px 120px 20px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow-y: auto;
+    }
+
+    /* Búsqueda */
+    /* .mobile-search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--color-dark);
+        margin-bottom: 40px;
+        flex-shrink: 0;
+    }
+
+    .mobile-search svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--color-dark);
+    } */
+    .mobile-search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--color-dark);
+        margin-bottom: 40px;
+        flex-shrink: 0;
+        /* ⭐ Nuevos estilos para botón */
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--color-dark);
+        width: 100%;
+        cursor: pointer;
+        text-align: left;
+        font-family: var(--font-texts);
+        font-size: 16px;
+        color: var(--color-dark);
+    }
+    
+    .mobile-search svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--color-dark);
+    }
+    
+    /* ⭐ ELIMINAR el estilo del input que ya no existe */
+    /* .mobile-search input { ... } */
+
+    /* .mobile-search input {
+        border: none;
+        background: transparent;
+        font-family: var(--font-texts);
+        font-size: 16px;
+        outline: none;
+        flex: 1;
+    } */
+
+    /* Navegación */
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .mobile-nav > a {
+        font-family: var(--font-interactive);
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--color-dark);
+        letter-spacing: 0px;
+    }
+
+    /* Submenu de Tienda */
+    .mobile-nav-item-with-sub {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .mobile-nav-toggle {
+        background: transparent;
+        border: none;
+        font-family: var(--font-interactive);
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--color-dark);
+        letter-spacing: 0px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 0;
+    }
+
+    .mobile-nav-toggle svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--color-dark);
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-nav-toggle.open svg {
+        transform: rotate(180deg);
+    }
+
+    .mobile-submenu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+
+    .mobile-submenu.open {
+        display: flex;
+    }
+
+    .mobile-submenu a {
+        font-family: var(--font-interactive);
+        font-size: 14px;
+        text-decoration: none;
+        color: var(--color-dark);
+        letter-spacing: 0px;
+        text-transform: uppercase;
+    }
+
+    /* Logo BH al final - POSICIÓN FIJA ABSOLUTA */
+    .mobile-menu-logo {
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .mobile-menu-logo img {
+        width: 80px;
+    }
+}
+
+
+
+
+
+/* ========================================
+   EFECTOS DE COLOR MOBILE (igual que desktop)
+======================================== */
+
+@media (max-width: 1024px) {
+    /* Header transparente en home/portada */
+    .mobile-header-wrapper.header-transparent {
+        background-color: transparent !important;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-header-wrapper.header-transparent .mobile-menu-toggle {
+        color: var(--color-light) !important;
+        transition: color 0.3s ease;
+    }
+
+    /* Logo en blanco cuando transparente */
+    .mobile-header-wrapper.header-transparent .mobile-logo img {
+        filter: brightness(0) invert(1);
+        transition: filter 0.3s ease;
+    }
+
+    /* ⭐ ELIMINAR HOVER EN MÓVIL - No tiene sentido en táctil */
+    /* .mobile-header-wrapper.header-transparent:hover - COMENTADO */
+    
+    /* ========================================
+       HEADER SOBRE UNIVERSO BELL HOUSE
+    ======================================== */
+
+    .mobile-header-wrapper.header-over-universo {
+        background-color: transparent !important;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-header-wrapper.header-over-universo .mobile-menu-toggle {
+        color: var(--color-dark) !important;
+    }
+
+    .mobile-header-wrapper.header-over-universo .mobile-logo img {
+        filter: none !important;
+    }
+
+    /* ⭐ ELIMINAR HOVER EN MÓVIL */
+    /* .mobile-header-wrapper.header-over-universo:hover - COMENTADO */
+
+    /* Menu overlay con fondo corporativo */
+    .mobile-header-wrapper.header-over-universo .mobile-menu-overlay {
+        background: var(--color-corporative) !important;
+    }
+
+    /* ========================================
+       HEADER OCULTO EN FOOTER
+    ======================================== */
+
+    .mobile-header-wrapper.header-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    /* ========================================
+       FORZAR FONDO CUANDO MENÚ ABIERTO (solo en transparentes)
+    ======================================== */
+
+    /* Solo en PORTADA (header-transparent) → fondo sólido al abrir menú */
+    .mobile-header-wrapper.header-transparent.menu-open {
+        background-color: var(--color-background) !important;
+    }
+    
+    .mobile-header-wrapper.header-transparent.menu-open .mobile-menu-toggle {
+        color: var(--color-dark) !important;
+    }
+    
+    .mobile-header-wrapper.header-transparent.menu-open .mobile-logo img {
+        filter: none !important;
+    }
+    
+    /* Solo en UNIVERSO (header-over-universo) → fondo corporativo al abrir menú */
+    .mobile-header-wrapper.header-over-universo.menu-open {
+        background-color: var(--color-corporative) !important;
+    }
+}
+
+
+/* ========================================
+   HEADER SOBRE CTA VIDEO
+======================================== */
+
+@media (max-width: 1024px) {
+    .mobile-header-wrapper.header-over-video {
+        background-color: transparent !important;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-header-wrapper.header-over-video .mobile-menu-toggle {
+        color: var(--color-dark) !important;
+    }
+
+    .mobile-header-wrapper.header-over-video .mobile-logo img {
+        filter: none !important;
+    }
+
+    /* Menu overlay con fondo normal */
+    .mobile-header-wrapper.header-over-video .mobile-menu-overlay {
+        background: var(--color-background) !important;
+    }
+
+    /* Al abrir menú → fondo sólido */
+    .mobile-header-wrapper.header-over-video.menu-open {
+        background-color: var(--color-background) !important;
+    }
+}
