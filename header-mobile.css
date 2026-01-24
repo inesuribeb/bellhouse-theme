@@ -40,7 +40,7 @@
     .mobile-logo {
         display: block;
     }
-    
+
     .mobile-logo img {
         height: 22px;
         display: block;
@@ -124,13 +124,13 @@
         font-size: 16px;
         color: var(--color-dark);
     }
-    
+
     .mobile-search svg {
         width: 20px;
         height: 20px;
         stroke: var(--color-dark);
     }
-    
+
     /* ⭐ ELIMINAR el estilo del input que ya no existe */
     /* .mobile-search input { ... } */
 
@@ -152,7 +152,7 @@
         flex-shrink: 0;
     }
 
-    .mobile-nav > a {
+    .mobile-nav>a {
         font-family: var(--font-interactive);
         font-size: 18px;
         text-decoration: none;
@@ -181,6 +181,22 @@
         align-items: center;
         text-align: left;
         padding: 0;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .mobile-menu-toggle span {
+        pointer-events: none;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .mobile-menu-toggle a {
+        color: inherit !important;
+        text-decoration: none !important;
+        pointer-events: none !important;
     }
 
     .mobile-nav-toggle svg {
@@ -240,6 +256,7 @@
 ======================================== */
 
 @media (max-width: 1024px) {
+
     /* Header transparente en home/portada */
     .mobile-header-wrapper.header-transparent {
         background-color: transparent !important;
@@ -259,7 +276,7 @@
 
     /* ⭐ ELIMINAR HOVER EN MÓVIL - No tiene sentido en táctil */
     /* .mobile-header-wrapper.header-transparent:hover - COMENTADO */
-    
+
     /* ========================================
        HEADER SOBRE UNIVERSO BELL HOUSE
     ======================================== */
@@ -303,15 +320,15 @@
     .mobile-header-wrapper.header-transparent.menu-open {
         background-color: var(--color-background) !important;
     }
-    
+
     .mobile-header-wrapper.header-transparent.menu-open .mobile-menu-toggle {
         color: var(--color-dark) !important;
     }
-    
+
     .mobile-header-wrapper.header-transparent.menu-open .mobile-logo img {
         filter: none !important;
     }
-    
+
     /* Solo en UNIVERSO (header-over-universo) → fondo corporativo al abrir menú */
     .mobile-header-wrapper.header-over-universo.menu-open {
         background-color: var(--color-corporative) !important;
