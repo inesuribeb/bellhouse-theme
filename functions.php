@@ -51,9 +51,17 @@ function bellhouse_header_styles()
 add_action('wp_enqueue_scripts', 'bellhouse_header_styles');
 
 // Cargar CSS del footer
+// function bellhouse_footer_styles()
+// {
+//     wp_enqueue_style('bellhouse-footer', get_stylesheet_directory_uri() . '/footer.css', array(), '1.0');
+// }
+// add_action('wp_enqueue_scripts', 'bellhouse_footer_styles');
 function bellhouse_footer_styles()
 {
-    wp_enqueue_style('bellhouse-footer', get_stylesheet_directory_uri() . '/footer.css', array(), '1.0');
+    $footer_css_path = get_stylesheet_directory() . '/footer.css';
+    $version = file_exists($footer_css_path) ? filemtime($footer_css_path) : '1.0';
+    
+    wp_enqueue_style('bellhouse-footer', get_stylesheet_directory_uri() . '/footer.css', array(), $version);
 }
 add_action('wp_enqueue_scripts', 'bellhouse_footer_styles');
 
