@@ -123,7 +123,7 @@ $email_network = get_field('footer_email_network', $footer_id);
                 <h3 class="footer-title">Diseño y desarrollo</h3>
                 <nav class="footer-credits-links">
                     <a href="https://estudio.inesuribe.es/" target="_blank">Estudio Ines Uribe</a>
-                    <a href="https://virgulillaestudio.com/" target="_blank">Virguilila Estudio</a>
+                    <a href="https://virgulillaestudio.com/" target="_blank">Virgulilla Estudio</a>
                 </nav>
                 <h3 class="footer-title footer-title-links">Links</h3>
                 <nav class="footer-legal">
