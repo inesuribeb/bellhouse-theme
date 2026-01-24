@@ -271,6 +271,24 @@
     opacity: 70%;
 }
 
+/* Evitar que iOS/Safari convierta teléfonos en enlaces azules */
+.footer-text a[href^="tel:"] {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: auto; /* Mantener funcionalidad de llamada */
+}
+
+/* O simplemente desactivar detección automática en todo el footer */
+.footer-text {
+    -webkit-text-size-adjust: none;
+}
+
+/* Alternativa: aplicar a todo el texto del footer */
+.footer-address a,
+.footer-text a {
+    color: var(--color-dark);
+    text-decoration: none;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
