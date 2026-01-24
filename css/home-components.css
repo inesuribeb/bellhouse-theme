@@ -133,6 +133,10 @@
     .portada-titulo h1 {
         font-size: 36px;
     }
+
+    .portada-card__text {
+        display: none;
+    }
 }
 
 
@@ -215,7 +219,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .home-portada--fullscreen .portada-titulo h1 {
-        font-size: 36px;
+        font-size: 40px;
     }
 }
 
@@ -502,7 +506,7 @@
     }
     
     .intro-titulo {
-        font-size: 36px;
+        font-size: 40px;
         width: 100%; /* ⭐ Ancho completo */
         padding-bottom: 15px;
     }
@@ -560,7 +564,7 @@
 /* ⭐ Móvil muy pequeño (opcional) */
 @media (max-width: 480px) {
     .intro-titulo {
-        font-size: 32px;
+        font-size: 40px;
     }
     
     .intro-texto {

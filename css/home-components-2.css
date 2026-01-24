@@ -484,7 +484,10 @@
     .home-novedades {
         height: 100vh;
         padding: 0; /* ⭐ A sangre también en tablet */
+       
     }
+
+
 
     .novedades-content {
         padding-top: 90px;
@@ -504,15 +507,38 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .home-novedades-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .novedades-link {
+        display: flex; /* ⭐ AÑADE */
+        align-items: center; /* ⭐ AÑADE */
+        justify-content: center; /* ⭐ AÑADE */
+        width: 100%;
+    }
+
     .home-novedades {
         height: 100vh;
         /* ⭐ Mantiene 100vh */
+        width: 100%;
         padding: 0;
         /* ⭐ A sangre (sin padding) */
+        /* justify-content: center;
+        align-items: center; */
     }
 
-    .novedades-content {
+    /* .novedades-content {
         padding-top: 100px;
+    } */
+
+     .novedades-content {
+        width: 100%;
+        padding-top: 0px;
+        justify-content: center;
     }
 
     .novedades-label {
@@ -528,9 +554,9 @@
 }
 
 @media (max-width: 480px) {
-    .novedades-content {
+    /* .novedades-content {
         padding-top: 80px;
-    }
+    } */
 
     .novedades-titulo {
         font-size: 32px;
@@ -663,7 +689,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .home-universo {
-        min-height: 70vh;
+        min-height: 75vh;
         /* ⭐ Sin limitación de altura */
         display: flex;
         flex-direction: center;
