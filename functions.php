@@ -42,20 +42,20 @@ function bellhouse_adobe_fonts()
 add_action('wp_enqueue_scripts', 'bellhouse_adobe_fonts');
 
 // Cargar CSS del header
+// function bellhouse_header_styles()
+// {
+//     wp_enqueue_style('bellhouse-header', get_stylesheet_directory_uri() . '/header.css', array(), '1.0');
+//     wp_enqueue_style('bellhouse-header-mobile', get_stylesheet_directory_uri() . '/header-mobile.css', array(), '1.0'); // ⭐ AÑADIR
+//     wp_enqueue_style('bellhouse-modal-search', get_stylesheet_directory_uri() . '/css/modal-search.css', array(), '1.0'); // ⭐ AÑADIR
+// }
+// add_action('wp_enqueue_scripts', 'bellhouse_header_styles');
 function bellhouse_header_styles()
 {
-    wp_enqueue_style('bellhouse-header', get_stylesheet_directory_uri() . '/header.css', array(), '1.0');
-    wp_enqueue_style('bellhouse-header-mobile', get_stylesheet_directory_uri() . '/header-mobile.css', array(), '1.0'); // ⭐ AÑADIR
-    wp_enqueue_style('bellhouse-modal-search', get_stylesheet_directory_uri() . '/css/modal-search.css', array(), '1.0'); // ⭐ AÑADIR
+    wp_enqueue_style('bellhouse-header', get_stylesheet_directory_uri() . '/header.css', array(), filemtime(get_stylesheet_directory() . '/header.css'));
+    wp_enqueue_style('bellhouse-header-mobile', get_stylesheet_directory_uri() . '/header-mobile.css', array(), filemtime(get_stylesheet_directory() . '/header-mobile.css'));
+    wp_enqueue_style('bellhouse-modal-search', get_stylesheet_directory_uri() . '/css/modal-search.css', array(), filemtime(get_stylesheet_directory() . '/css/modal-search.css'));
 }
 add_action('wp_enqueue_scripts', 'bellhouse_header_styles');
-
-// Cargar CSS del footer
-// function bellhouse_footer_styles()
-// {
-//     wp_enqueue_style('bellhouse-footer', get_stylesheet_directory_uri() . '/footer.css', array(), '1.0');
-// }
-// add_action('wp_enqueue_scripts', 'bellhouse_footer_styles');
 function bellhouse_footer_styles()
 {
     $footer_css_path = get_stylesheet_directory() . '/footer.css';
