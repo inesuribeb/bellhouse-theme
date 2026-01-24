@@ -314,7 +314,7 @@
     }
     
     .intro-titulo {
-        font-size: 38px;
+        font-size: 46px;
     }
     
     .intro-texto {
@@ -322,7 +322,7 @@
     }
     
     .intro-quote {
-        font-size: 30px;
+        font-size: 34px;
     }
 }
 
@@ -573,7 +573,7 @@
     }
     
     .antes-despues-titulo {
-        font-size: 38px;
+        font-size: 40px;
     }
     
     .antes-despues-texto {
@@ -832,7 +832,7 @@
 
 @media (max-width: 480px) {
     .galeria-titulo {
-        font-size: 38px;
+        font-size: 40px;
         padding: 30px 20px 40px 20px;
     }
     

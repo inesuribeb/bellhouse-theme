@@ -199,7 +199,9 @@
     }
     
     .hero-titulo {
-        font-size: 38px;
+        /* font-size: 38px; */
+        font-size: 46px;
+
     }
 }
 
@@ -563,7 +565,7 @@
     }
     
     .equipo-titulo {
-        font-size: 36px;
+        font-size: 40px;
         line-height: 1;
     }
     
@@ -614,7 +616,7 @@
     }
     
     .equipo-titulo {
-        font-size: 32px;
+        font-size: 40px;
     }
     
     .equipo-texto {
@@ -835,7 +837,7 @@
     }
     
     .publicaciones-titulo {
-        font-size: 36px;
+        font-size: 40px;
         padding: 60px 20px 0px 20px;
     }
     
@@ -878,7 +880,7 @@
 
 @media (max-width: 480px) {
     .publicaciones-titulo {
-        font-size: 32px;
+        font-size: 40px;
         padding: 40px 20px 0px 20px;
     }
     

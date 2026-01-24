@@ -181,7 +181,9 @@
     }
     
     .proyectos-intro h1 {
-        font-size: 38px;
+        /* font-size: 38px; */
+        font-size: 46px;
+
     }
     
     .proyectos-intro .entry-content,

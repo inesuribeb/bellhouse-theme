@@ -292,7 +292,7 @@
     }
 
     .proyectos-titulo {
-        font-size: 36px;
+        font-size: 40px;
         padding-top: 0;
     }
 
@@ -355,7 +355,7 @@
 
 @media (max-width: 480px) {
     .proyectos-titulo {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     .proyectos-texto {
@@ -546,7 +546,7 @@
     }
 
     .novedades-titulo {
-        font-size: 36px;
+        font-size: 40px;
         width: 80%;
         /* ⭐ Más ancho en móvil */
         line-height: 1;
@@ -559,7 +559,7 @@
     } */
 
     .novedades-titulo {
-        font-size: 32px;
+        font-size: 40px;
         width: 85%;
         /* ⭐ Aún más ancho en móviles pequeños */
     }
@@ -710,7 +710,7 @@
     }
 
     .universo-titulo {
-        font-size: 36px;
+        font-size: 40px;
         padding-bottom: 30px;
         max-width: 100%;
         line-height: 1;
@@ -726,11 +726,13 @@
 
 @media (max-width: 480px) {
     .home-universo {
+        min-height: 80vh;
         padding: 0px 0;
     }
 
     .universo-titulo {
-        font-size: 32px;
+        font-size: 40px;
+        padding-bottom: 10px;
     }
 
     .universo-imagen {
@@ -861,7 +863,7 @@
     }
     
     .contacto-titulo {
-        font-size: 36px;
+        font-size: 40px;
         line-height: 1;
     }
 }
@@ -872,6 +874,6 @@
     }
     
     .contacto-titulo {
-        font-size: 32px;
+        font-size: 40px;
     }
 }

@@ -119,19 +119,23 @@
     }
     
     .portada-titulo h1 {
-        font-size: 48px;
+        font-size: 52px;
     }
 }
 
 
 
 @media (max-width: 768px) {
+    .home-portada {
+        padding: 30px;
+    }
+    
     .portada-cards {
         flex-direction: column;
     }
     
     .portada-titulo h1 {
-        font-size: 36px;
+        font-size: 46px;
     }
 
     .portada-card__text {
@@ -218,8 +222,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .home-portada--fullscreen {
+        padding: 30px;
+    }
     .home-portada--fullscreen .portada-titulo h1 {
-        font-size: 40px;
+        font-size: 46px;
     }
 }
 
