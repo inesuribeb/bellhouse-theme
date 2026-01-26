@@ -127,7 +127,9 @@
 
 @media (max-width: 768px) {
     .home-portada {
-        padding: 30px;
+        padding: 0px;
+        width: 100%;
+
     }
     
     .portada-cards {
@@ -136,6 +138,7 @@
     
     .portada-titulo h1 {
         font-size: 46px;
+        width: 100%;
     }
 
     .portada-card__text {

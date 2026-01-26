@@ -60,7 +60,7 @@ function bellhouse_footer_styles()
 {
     $footer_css_path = get_stylesheet_directory() . '/footer.css';
     $version = file_exists($footer_css_path) ? filemtime($footer_css_path) : '1.0';
-    
+
     wp_enqueue_style('bellhouse-footer', get_stylesheet_directory_uri() . '/footer.css', array(), $version);
 }
 add_action('wp_enqueue_scripts', 'bellhouse_footer_styles');
@@ -87,9 +87,11 @@ function bellhouse_header_scripts()
 add_action('wp_enqueue_scripts', 'bellhouse_header_scripts');
 
 // Generar menú desplegable con Featured Images
+// Generar menú desplegable con Featured Images
 function bellhouse_menu_overlay()
 {
     $tienda_visible = get_theme_mod('tienda_visible', false);
+    $menu_promo_tipo = get_theme_mod('menu_promo_tipo', 'novedades'); // ⭐ NUEVO
 
     $menu_items = array(
         array('slug' => 'nuestros-proyectos', 'title' => 'Proyectos'),
@@ -98,11 +100,18 @@ function bellhouse_menu_overlay()
         array('slug' => 'contacto', 'title' => 'Contacto'),
     );
 
-    // Solo añadir items de tienda si está visible
-    if ($tienda_visible && class_exists('WooCommerce')) {
+    // ⭐ CAMBIO: Añadir página promocional según elección
+    if ($tienda_visible && class_exists('WooCommerce') && $menu_promo_tipo !== 'ninguna') {
+        $promo_title = ($menu_promo_tipo === 'novedades') ? 'Novedades' : 'Ofertas';
+        $promo_slug = $menu_promo_tipo;
+
         array_splice($menu_items, 1, 0, array(
-            array('slug' => 'tienda', 'title' => 'Novedades')
+            array('slug' => $promo_slug, 'title' => $promo_title)
         ));
+    }
+
+    // Añadir Tienda siempre al final (si está visible)
+    if ($tienda_visible && class_exists('WooCommerce')) {
         array_splice($menu_items, 3, 0, array(
             array('slug' => 'tienda', 'title' => 'Tienda')
         ));
@@ -110,7 +119,7 @@ function bellhouse_menu_overlay()
 
     $colors = array('#D4C5B9', '#C9B8A8', '#BFA997', '#B39A86', '#A88B75', '#9C7C64');
 
-    // ⭐ Clase condicional para el grid
+    // Clase condicional para el grid
     $grid_class = $tienda_visible ? 'menu-grid' : 'menu-grid menu-grid-no-tienda';
 
     ob_start();
@@ -422,12 +431,47 @@ if (function_exists('acf_add_local_field_group')):
         'key' => 'group_home',
         'title' => 'Home - Configuración',
         'fields' => array(
-            // Tab Portada
+
+            // ⭐ NUEVO: Selector de tipo de portada (solo si tienda activa)
+            array(
+                'key' => 'field_portada_tipo',
+                'label' => 'Tipo de Portada',
+                'name' => 'portada_tipo',
+                'type' => 'radio',
+                'instructions' => 'Elige qué tipo de portada mostrar',
+                'choices' => array(
+                    'con_cards' => 'Con Cards (Tienda + Inspírate)',
+                    'sin_tienda' => 'Pantalla Completa (Imagen o Video)',
+                ),
+                'default_value' => 'con_cards',
+                'layout' => 'vertical',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_tienda_activa_check', // ⭐ Esto lo crearemos después
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+            ),
+
+            // Tab Portada CON CARDS
             array(
                 'key' => 'field_portada_tab',
-                'label' => 'Portada',
+                'label' => 'Portada Con Cards',
                 'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
+
             // Título principal
             array(
                 'key' => 'field_portada_titulo',
@@ -435,7 +479,17 @@ if (function_exists('acf_add_local_field_group')):
                 'name' => 'portada_titulo',
                 'type' => 'text',
                 'default_value' => 'Desde 1980 creando hogares con alma',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
+
             // Card 1
             array(
                 'key' => 'field_portada_card1_imagen',
@@ -444,6 +498,15 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'image',
                 'return_format' => 'array',
                 'preview_size' => 'medium',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_portada_card1_texto',
@@ -451,6 +514,15 @@ if (function_exists('acf_add_local_field_group')):
                 'name' => 'portada_card1_texto',
                 'type' => 'text',
                 'default_value' => 'TIENDA',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_portada_card1_link',
@@ -458,7 +530,17 @@ if (function_exists('acf_add_local_field_group')):
                 'name' => 'portada_card1_link',
                 'type' => 'text',
                 'default_value' => '/tienda',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
+
             // Card 2
             array(
                 'key' => 'field_portada_card2_imagen',
@@ -467,6 +549,15 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'image',
                 'return_format' => 'array',
                 'preview_size' => 'medium',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_portada_card2_texto',
@@ -474,6 +565,15 @@ if (function_exists('acf_add_local_field_group')):
                 'name' => 'portada_card2_texto',
                 'type' => 'text',
                 'default_value' => 'INSPÍRATE',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_portada_card2_link',
@@ -481,22 +581,29 @@ if (function_exists('acf_add_local_field_group')):
                 'name' => 'portada_card2_link',
                 'type' => 'text',
                 'default_value' => '/universo-bell-house',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_portada_tipo',
+                            'operator' => '==',
+                            'value' => 'con_cards',
+                        ),
+                    ),
+                ),
             ),
-
-
 
             // ===== PORTADA SIN TIENDA =====
             array(
                 'key' => 'field_portada_sin_tienda_tab',
-                'label' => 'Portada Sin Tienda',
+                'label' => 'Portada Pantalla Completa',
                 'type' => 'tab',
             ),
             array(
                 'key' => 'field_portada_sin_tienda_titulo',
-                'label' => 'Título (Sin Tienda)',
+                'label' => 'Título',
                 'name' => 'portada_sin_tienda_titulo',
                 'type' => 'text',
-                'instructions' => 'Título que aparecerá cuando la tienda esté desactivada',
+                'instructions' => 'Título que aparecerá en la portada',
                 'default_value' => 'Desde 1980 creando hogares con alma',
             ),
             array(
@@ -554,7 +661,7 @@ if (function_exists('acf_add_local_field_group')):
                 array(
                     'param' => 'page',
                     'operator' => '==',
-                    'value' => get_page_by_path('home')->ID ?? 0, // ID de la página Home
+                    'value' => get_page_by_path('home')->ID ?? 0,
                 ),
             ),
         ),
@@ -885,9 +992,8 @@ if (function_exists('acf_add_local_field_group')):
         ),
     ));
 
+
 endif; // Cierre del if de ACF
-
-
 
 function bellhouse_proyectos_styles()
 {
@@ -916,6 +1022,8 @@ function bellhouse_home_styles()
         wp_enqueue_style('bellhouse-home', get_stylesheet_directory_uri() . '/css/home.css', array(), '1.0');
         wp_enqueue_style('bellhouse-home-components', get_stylesheet_directory_uri() . '/css/home-components.css', array(), '1.0');
         wp_enqueue_style('bellhouse-home-components-2', get_stylesheet_directory_uri() . '/css/home-components-2.css', array(), '1.0');
+        // CSS de CTA Tienda (Home)
+        wp_enqueue_style('bellhouse-home-cta-tienda', get_stylesheet_directory_uri() . '/css/home/cta-tienda.css', array(), '1.0');
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_home_styles');
@@ -927,6 +1035,8 @@ function bellhouse_home_scripts()
         wp_enqueue_script('bellhouse-home-intro', get_stylesheet_directory_uri() . '/js/home-intro.js', array(), '1.0', true);
         wp_enqueue_script('bellhouse-home-proyectos', get_stylesheet_directory_uri() . '/js/home-proyectos.js', array(), '1.0', true);
         wp_enqueue_script('bellhouse-home-video', get_stylesheet_directory_uri() . '/js/home-video.js', array(), '1.0', true);
+        // JS de CTA Tienda (Home)
+        wp_enqueue_script('bellhouse-home-cta-tienda', get_stylesheet_directory_uri() . '/js/home/cta-tienda.js', array(), '1.0', true);
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_home_scripts');
@@ -939,6 +1049,16 @@ require_once get_stylesheet_directory() . '/inc/acf-home-proyectos.php';
 
 // Cargar ACF Home Novedades
 require_once get_stylesheet_directory() . '/inc/acf-home-novedades.php';
+
+// ACF: Home Tienda
+require_once get_stylesheet_directory() . '/inc/acf-home-tienda.php';
+// AJAX: Home Tienda
+require_once get_stylesheet_directory() . '/inc/ajax-home-tienda.php';
+// Pasar ajaxurl a JavaScript
+add_action('wp_head', 'bellhouse_ajax_url');
+function bellhouse_ajax_url() {
+    echo '<script>const ajaxurl = "' . admin_url('admin-ajax.php') . '";</script>';
+}
 
 // Cargar ACF Home Universo
 require_once get_stylesheet_directory() . '/inc/acf-home-universo.php';
@@ -1109,6 +1229,20 @@ function bellhouse_custom_product_template($template)
     return $template;
 }
 
+// ⭐ NUEVO: Forzar template personalizado para archivo de tienda (shop)
+add_filter('template_include', 'bellhouse_custom_shop_template', 99);
+
+function bellhouse_custom_shop_template($template)
+{
+    if (is_shop() || is_product_category() || is_product_tag()) {
+        $custom_template = get_stylesheet_directory() . '/woocommerce/archive-product.php';
+        if (file_exists($custom_template)) {
+            return $custom_template;
+        }
+    }
+    return $template;
+}
+
 // ========================================
 // CUSTOMIZER: Mostrar/Ocultar Tienda
 // ========================================
@@ -1151,11 +1285,11 @@ function bellhouse_rgpd_styles()
     if (is_page('aviso-legal')) {
         wp_enqueue_style('bellhouse-aviso-legal', get_stylesheet_directory_uri() . '/css/rgdp/aviso-legal.css', array(), '1.0');
     }
-    
+
     if (is_page('privacidad')) {
         wp_enqueue_style('bellhouse-privacidad', get_stylesheet_directory_uri() . '/css/rgdp/privacidad.css', array(), '1.0');
     }
-    
+
     if (is_page('cookies')) {
         wp_enqueue_style('bellhouse-cookies', get_stylesheet_directory_uri() . '/css/rgdp/cookies.css', array(), '1.0');
     }
@@ -1171,3 +1305,113 @@ function bellhouse_404_styles()
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_404_styles');
+
+
+// ACF Tienda
+require_once get_stylesheet_directory() . '/inc/acf-tienda.php';
+
+
+// Cargar CSS de tienda
+// Cargar CSS de tienda
+function bellhouse_tienda_styles()
+{
+    if (is_shop() || is_product_category() || is_product_tag() || is_page('novedades') || is_page('ofertas')) {
+        // CSS principal de tienda
+        wp_enqueue_style('bellhouse-tienda', get_stylesheet_directory_uri() . '/css/tienda/tienda.css', array(), '1.0');
+        // CSS de intro
+        wp_enqueue_style('bellhouse-tienda-intro', get_stylesheet_directory_uri() . '/css/tienda/intro.css', array(), '1.0');
+        // CSS de categorías
+        wp_enqueue_style('bellhouse-tienda-categorias', get_stylesheet_directory_uri() . '/css/tienda/categorias.css', array(), '1.0');
+        // CSS de subcategorías
+        wp_enqueue_style('bellhouse-tienda-subcategorias', get_stylesheet_directory_uri() . '/css/tienda/subcategorias.css', array(), '1.0');
+        // CSS de grid de productos
+        wp_enqueue_style('bellhouse-tienda-grid', get_stylesheet_directory_uri() . '/css/tienda/grid-productos.css', array(), '1.0');
+        // CSS de product card
+        wp_enqueue_style('bellhouse-tienda-card', get_stylesheet_directory_uri() . '/css/tienda/product-card.css', array(), '1.2');
+        wp_enqueue_script('bellhouse-tienda-categorias', get_stylesheet_directory_uri() . '/js/tienda/tienda-categorias.js', array(), '1.0', true);
+        // JS de grid borders
+        wp_enqueue_script('bellhouse-tienda-grid-borders', get_stylesheet_directory_uri() . '/js/tienda/grid-borders.js', array(), '1.0', true);
+        // JS de subcategorías
+        wp_enqueue_script('bellhouse-tienda-subcategorias', get_stylesheet_directory_uri() . '/js/tienda/tienda-subcategorias.js', array(), '1.0', true);
+        // CSS de filtrar/ordenar
+        wp_enqueue_style('bellhouse-tienda-filtrar', get_stylesheet_directory_uri() . '/css/tienda/filtrar-ordenar.css', array(), '1.0');
+        // CSS de modal filtros
+        wp_enqueue_style('bellhouse-modal-filtros', get_stylesheet_directory_uri() . '/css/tienda/modal-filtros.css', array(), '1.0');
+        // JS de modal filtros
+        wp_enqueue_script('bellhouse-modal-filtros', get_stylesheet_directory_uri() . '/js/tienda/modal-filtros.js', array(), '1.0', true);
+        // CSS de filtros del modal
+        wp_enqueue_style('bellhouse-modal-filtro-filtro', get_stylesheet_directory_uri() . '/css/tienda/modal-filtro-filtro.css', array(), '1.0');
+        // CSS de ordenar del modal
+        wp_enqueue_style('bellhouse-modal-filtro-ordenar', get_stylesheet_directory_uri() . '/css/tienda/modal-filtro-ordenar.css', array(), '1.0');
+        // JS de sticky nav
+        wp_enqueue_script('bellhouse-sticky-nav', get_stylesheet_directory_uri() . '/js/tienda/sticky-nav.js', array(), '1.0', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'bellhouse_tienda_styles');
+
+// Cambiar slug de categorías de productos
+// add_filter('register_taxonomy_args', 'bellhouse_change_product_cat_slug', 10, 2);
+
+// function bellhouse_change_product_cat_slug($args, $taxonomy) {
+//     if ('product_cat' === $taxonomy) {
+//         $args['rewrite'] = array(
+//             'slug' => 'tienda',
+//             'with_front' => false,
+//             'hierarchical' => true,
+//         );
+//     }
+//     return $args;
+// }
+
+
+// ACF: Novedades
+require_once get_stylesheet_directory() . '/inc/acf-novedades.php';
+
+// ACF: Ofertas
+require_once get_stylesheet_directory() . '/inc/acf-ofertas.php';
+
+// ========================================
+// CUSTOMIZER: Opciones de Tienda
+// ========================================
+
+function bellhouse_customizer_settings($wp_customize)
+{
+
+    // ⭐ Crear sección de Tienda en el Customizer
+    $wp_customize->add_section('tienda_settings', array(
+        'title' => 'Tienda',
+        'priority' => 30,
+    ));
+
+    // ⭐ Opción: Mostrar/Ocultar Tienda
+    $wp_customize->add_setting('tienda_visible', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+
+    $wp_customize->add_control('tienda_visible', array(
+        'label' => 'Mostrar Tienda',
+        'description' => 'Activa o desactiva la tienda en el menú',
+        'section' => 'tienda_settings',
+        'type' => 'checkbox',
+    ));
+
+    // ⭐ Opción: Página promocional en menú (Novedades/Ofertas)
+    $wp_customize->add_setting('menu_promo_tipo', array(
+        'default' => 'novedades',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('menu_promo_tipo', array(
+        'label' => 'Página promocional en menú overlay',
+        'description' => 'Elige qué página mostrar en el menú desplegable',
+        'section' => 'tienda_settings',
+        'type' => 'radio',
+        'choices' => array(
+            'novedades' => 'Novedades',
+            'ofertas' => 'Ofertas',
+            'ninguna' => 'No mostrar',
+        ),
+    ));
+}
+add_action('customize_register', 'bellhouse_customizer_settings');

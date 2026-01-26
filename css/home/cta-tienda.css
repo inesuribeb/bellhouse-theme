@@ -1,0 +1,327 @@
+/* ========================================
+   HOME - CTA TIENDA
+======================================== */
+
+.home-tienda {
+    display: flex;
+    width: 100%;
+    background-color: var(--color-background);
+    padding: 0px 0;
+    height: 100vh;
+}
+
+.home-tienda-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* max-width: 1440px; */
+    /* margin: 0 auto;
+    padding: 0 30px; */
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.home-tienda-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 80px;
+    /* margin-bottom: 80px; */
+}
+
+.home-tienda-label {
+    /* font-family: var(--font-texts);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--color-medium-grey);
+    text-transform: lowercase;
+    display: block;
+    margin-bottom: 20px; */
+    font-family: var(--font-texts);
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--color-medium-grey);
+}
+
+.home-tienda-titulo {
+    /* font-family: var(--font-serif);
+    font-size: 56px;
+    font-weight: 200;
+    line-height: 1.1;
+    color: var(--color-dark);
+    margin: 0 0 20px 0; */
+
+    font-family: var(--font-serif);
+    font-size: 56px;
+    letter-spacing: -1px;
+    font-weight: 200;
+    line-height: 0.9;
+    margin: 0;
+    width: 70%;
+    padding-bottom: 20px;
+}
+
+
+.home-tienda-texto {
+    font-family: var(--font-texts);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-dark);
+    margin: 0;
+}
+
+/* ========================================
+   CATEGORÍAS (mismo estilo que tienda)
+======================================== */
+
+.home-tienda-categorias {
+    width: calc(100% - 60px);
+    margin: 0px 30px 20px 30px;
+    border-bottom: 1.5px solid var(--color-light-grey);
+    position: relative;
+}
+
+.home-tienda-categorias .categorias-grid {
+    display: flex;
+    width: 100%;
+    gap: 0;
+}
+
+.home-tienda-categorias .categoria-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--color-dark);
+    background: none;
+    border: none;
+    padding: 20px 10px;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* ⭐ QUITAR hover con opacity */
+/* .home-tienda-categorias .categoria-item:hover {
+    opacity: 0.6;
+} */
+
+.home-tienda-categorias .categoria-item.active {
+    font-weight: 500;
+}
+
+.home-tienda-categorias .categoria-nombre {
+    display: block;
+}
+
+/* ⭐ Subrayado animado */
+.home-tienda-categorias .categoria-underline {
+    position: absolute;
+    bottom: -1.5px;
+    left: 0;
+    height: 1.5px;
+    background-color: var(--color-dark);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* ========================================
+   GRID DE PRODUCTOS (6 columnas)
+======================================== */
+
+.home-tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 30px;
+    gap: 10px;
+    /* min-height: 400px;  */
+}
+
+.home-tienda-product {
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: var(--color-light-grey);
+    transition: transform 0.3s ease;
+}
+
+/* .home-tienda-product:hover {
+    transform: scale(1.02);
+} */
+
+.home-tienda-product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* .home-tienda-product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.home-tienda-product:hover .home-tienda-product-info {
+    opacity: 1;
+}
+
+.home-tienda-product-title {
+    font-family: var(--font-texts);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+}
+
+.home-tienda-product-price {
+    font-family: var(--font-texts);
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0;
+} */
+
+/* ========================================
+   LOADING STATE
+======================================== */
+
+.home-tienda-grid.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+    .home-tienda {
+        height: auto;
+        padding: 80px 0;
+    }
+    
+    .home-tienda-titulo {
+        font-size: 48px;
+        width: 80%;
+    }
+    
+    .home-tienda-categorias {
+        display: none; /* ⭐ Ocultar navegación de categorías en tablet */
+    }
+    
+    .home-tienda-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-tienda {
+        height: auto;
+        padding: 60px 0;
+    }
+    
+    .home-tienda-container {
+        padding: 0;
+    }
+    
+    .home-tienda-header {
+        padding: 0 20px 40px 20px;
+        margin-bottom: 0;
+    }
+    
+    .home-tienda-label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .home-tienda-titulo {
+        font-size: 40px;
+        width: 100%;
+        padding-bottom: 5px;
+    }
+    
+    .home-tienda-texto {
+        font-size: 16px;
+    }
+    
+    /* ⭐ CATEGORÍAS: En línea separadas por comas */
+    .home-tienda-categorias {
+        display: block;
+        width: 100%;
+        margin: 0 0 40px 0;
+        padding: 0 30px;
+        border: none;
+    }
+    
+    .home-tienda-categorias .categoria-underline {
+        display: none; /* Sin subrayado en móvil */
+    }
+    
+    .home-tienda-categorias .categorias-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0;
+        border: none;
+    }
+    
+    .home-tienda-categorias .categoria-item {
+        flex: none;
+        padding: 0;
+        font-size: 16px;
+        letter-spacing: 0px;
+        position: relative;
+        color: var(--color-medium-grey);
+    }
+    
+    /* ⭐ Ocultar TODOS en móvil */
+    .home-tienda-categorias .categoria-item[data-categoria="todos"] {
+        display: none;
+    }
+    
+    /* ⭐ Añadir coma después de cada categoría excepto la última */
+    .home-tienda-categorias .categoria-item:not(:last-child)::after {
+        content: ', ';
+        margin-right: 5px;
+        pointer-events: none;
+    }
+    
+    /* ⭐ Categoría activa en negrita */
+    .home-tienda-categorias .categoria-item.active {
+        font-weight: 400;
+        color: var(--color-dark);
+    }
+    
+    /* ⭐ GRID: 2 columnas x 1 fila = 2 productos */
+    .home-tienda-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 10px 60px 10px;
+        min-height: auto;
+    }
+    
+    .home-tienda-product {
+        aspect-ratio: 4 / 5; /* ⭐ Vertical como en desktop */
+    }
+}

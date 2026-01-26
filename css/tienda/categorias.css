@@ -1,0 +1,61 @@
+/* ========================================
+   CATEGORÍAS
+======================================== */
+
+.tienda-categorias {
+    width: calc(100% - 60px);
+    margin: 0px 30px 0px 30px;
+    border-bottom: 1.5px solid var(--color-light-grey);
+    position: relative; /* ⭐ AÑADE ESTO */
+}
+
+.categorias-grid {
+    display: flex;
+    width: 100%;
+    gap: 0;
+}
+
+.categoria-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 20px 10px;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.categoria-nombre {
+    display: block;
+}
+
+
+/* ⭐ Subrayado animado */
+.categoria-underline {
+    position: absolute;
+    bottom: -1.5px;
+    left: 0;
+    height: 1.5px;
+    background-color: var(--color-dark);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+
+/* ========================================
+   RESPONSIVE - OCULTAR EN TABLET Y MÓVIL
+======================================== */
+
+@media (max-width: 1024px) {
+    .tienda-categorias {
+        display: none; /* ⭐ Ocultar en tablet */
+    }
+}

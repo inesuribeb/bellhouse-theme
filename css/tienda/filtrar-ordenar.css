@@ -1,0 +1,123 @@
+/* ========================================
+   CONTENEDOR SUBCATEGORÍAS + FILTRAR
+======================================== */
+
+.subcategorias-filtrar-container {
+    width: 100%;
+    position: relative;
+    /* border-bottom: 1.5px solid var(--color-light-grey); */
+}
+
+/* ========================================
+   BOTÓN FILTRAR/ORDENAR (en absoluto)
+======================================== */
+
+.filtrar-ordenar-wrapper {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.filtrar-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-dark);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.filtrar-btn:hover {
+    opacity: 0.7;
+}
+
+.filtrar-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.filtrar-btn.active svg {
+    transform: rotate(180deg);
+}
+
+
+/* ========================================
+   CUANDO NO HAY SUBCATEGORÍAS
+======================================== */
+
+/* .subcategorias-filtrar-container:has(> div:first-child:empty) {
+    padding-top: 50px; 
+} */
+.subcategorias-filtrar-container:not(:has(.tienda-subcategorias)) {
+    padding-top: 62px;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET Y MÓVIL
+======================================== */
+
+@media (max-width: 1024px) {
+    .subcategorias-filtrar-container {
+        display: flex;
+        flex-direction: column;
+        /* border-bottom: 1.5px solid var(--color-light-grey); */
+    }
+    
+    .filtrar-ordenar-wrapper {
+        position: relative; /* ⭐ Quitar absolute */
+        right: auto;
+        top: auto;
+        transform: none;
+        width: calc(100% - 60px);
+        margin: 0 30px;
+        padding: 20px 0;
+        justify-content: flex-end;
+    }
+
+    /* .subcategorias-filtrar-container:has(> div:first-child:empty) {
+        width: calc(100% - 60px);
+        margin: 0 30px;
+    }
+    
+    .subcategorias-filtrar-container:has(> div:first-child:empty) .filtrar-ordenar-wrapper {
+        padding: 18px 0;
+    } */
+}
+
+@media (max-width: 768px) {
+    .filtrar-ordenar-wrapper {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+        padding: 15px 0;
+    }
+    
+    .filtrar-btn {
+        font-size: 13px;
+    }
+    
+    .filtrar-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* .subcategorias-filtrar-container:has(> div:first-child:empty) {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+    
+    .subcategorias-filtrar-container:has(> div:first-child:empty) .filtrar-ordenar-wrapper {
+        padding: 15px 0;
+    } */
+}

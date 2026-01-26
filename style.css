@@ -48,6 +48,31 @@ html {
     --font-interactive: 'Sweet Sans Pro', sans-serif;
     --font-serif: 'Editors Note', serif;
     --font-texts: 'Acumin', sans-serif;
+
+
+    /* ========================================
+       COLORES DE ATRIBUTOS (Color)
+    ======================================== */
+    --color-amarillo: #FFD700;
+    --color-azul: #5373A6;
+    --color-beige: #F5F5DD;
+    --color-blanco: #FFFFFF;
+    --color-bronce-start: #CD7F32;
+    --color-bronce-end: #B8860B;
+    --color-crema: #EDE8DF;
+    --color-dorado: #DBA521;
+    --color-gris: #CEC9CA;
+    --color-marron: #988677;
+    --color-morado: #9B59B6;
+    --color-mostaza: #E1AD01;
+    --color-naranja: #F89902;
+    --color-negro: #2C2C2C;
+    --color-plata-start: #C0C0C0;
+    --color-plata-end: #E8E8E8;
+    --color-rojo: #FE0300;
+    --color-rosa: #FFC0CB;
+    --color-terracota: #E2725B;
+    --color-verde: #348E34;
 }
 
 /* *{

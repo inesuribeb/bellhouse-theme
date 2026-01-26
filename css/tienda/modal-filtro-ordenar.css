@@ -1,0 +1,51 @@
+/* ========================================
+   OPCIONES DE ORDENAR
+======================================== */
+
+.ordenar-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ordenar-opcion {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    /* border-bottom: 1px solid var(--color-light-grey); */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* .ordenar-opcion:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+} */
+
+.ordenar-radio {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: var(--color-dark);
+}
+
+.ordenar-label {
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-dark);
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Estado seleccionado */
+/* .ordenar-opcion:has(.ordenar-radio:checked) {
+    background-color: rgba(0, 0, 0, 0.03);
+} */
+
+.ordenar-opcion:has(.ordenar-radio:checked) .ordenar-label {
+    font-weight: 500;
+}

@@ -247,3 +247,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+// ========================================
+// CAROUSEL THUMBS (nuevo)
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    const thumbsContainer = document.querySelector('.galeria-thumbs');
+    const arrowLeft = document.getElementById('thumbsArrowLeft');
+    const arrowRight = document.getElementById('thumbsArrowRight');
+
+    if (thumbsContainer && arrowLeft && arrowRight) {
+        const scrollAmount = 300;
+
+        function updateArrows() {
+            const scrollLeft = thumbsContainer.scrollLeft;
+            const maxScroll = thumbsContainer.scrollWidth - thumbsContainer.clientWidth;
+
+            if (scrollLeft <= 0) {
+                arrowLeft.classList.add('hidden');
+            } else {
+                arrowLeft.classList.remove('hidden');
+            }
+
+            if (scrollLeft >= maxScroll - 1) {
+                arrowRight.classList.add('hidden');
+            } else {
+                arrowRight.classList.remove('hidden');
+            }
+
+            if (maxScroll <= 0) {
+                arrowLeft.classList.add('hidden');
+                arrowRight.classList.add('hidden');
+            }
+        }
+
+        setTimeout(updateArrows, 100);
+        thumbsContainer.addEventListener('scroll', updateArrows);
+        window.addEventListener('resize', updateArrows);
+
+        arrowLeft.addEventListener('click', function(e) {
+            e.stopPropagation();
+            thumbsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        arrowRight.addEventListener('click', function(e) {
+            e.stopPropagation();
+            thumbsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
+});

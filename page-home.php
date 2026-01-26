@@ -1,4 +1,7 @@
 <?php
+/**
+ * Template Name: Home
+ */
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -22,8 +25,25 @@
 
     <main class="page-home">
 
-        <!-- Portada -->
-        <?php include(get_stylesheet_directory() . '/components/home/portada.php'); ?>
+        <!-- Portada (con lógica condicional) -->
+        <?php
+        $tienda_visible = get_theme_mod('tienda_visible', false);
+        $portada_tipo = get_field('portada_tipo');
+
+        // Si tienda NO está activa, forzar portada sin tienda
+        if (!$tienda_visible) {
+            $portada_tipo = 'sin_tienda';
+        }
+
+        // Renderizar según tipo
+        if ($portada_tipo === 'sin_tienda') {
+            // Mostrar portada pantalla completa
+            include(get_stylesheet_directory() . '/components/home/portada-sin-tienda.php');
+        } else {
+            // Mostrar portada con cards (default)
+            include(get_stylesheet_directory() . '/components/home/portada.php');
+        }
+        ?>
 
         <!-- Intro -->
         <?php include(get_stylesheet_directory() . '/components/home/intro.php'); ?>
@@ -33,15 +53,11 @@
         <!-- CTA Proyectos -->
         <?php include(get_stylesheet_directory() . '/components/home/cta-proyectos.php'); ?>
 
-        <!-- <div class="espacio-vacio"></div> -->
-
         <!-- CTA Novedades -->
         <?php include(get_stylesheet_directory() . '/components/home/cta-novedades.php'); ?>
 
-        <!-- <div class="espacio-vacio"></div> -->
-
-        <!-- CTA Tienda -->
-        <?php if (get_theme_mod('tienda_visible', false)): ?>
+        <!-- CTA Tienda (solo si tienda visible) -->
+        <?php if ($tienda_visible): ?>
             <?php include(get_stylesheet_directory() . '/components/home/cta-tienda.php'); ?>
         <?php endif; ?>
 
@@ -56,5 +72,6 @@
 
     </main>
 
-    <?php
-    get_footer();
+    <?php get_footer(); ?>
+</body>
+</html>

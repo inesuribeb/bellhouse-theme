@@ -121,37 +121,127 @@ $a_medida = get_field('a_medida');
             data-product_variations='<?php echo json_encode($product->get_available_variations()); ?>'>
 
             <?php
-            // Obtener atributos (Color, Tamaño, etc.)
+            // ⭐ Obtener atributos y forzar orden: Color primero, luego Tamaño
             $product_attributes = $product->get_variation_attributes();
 
-            foreach ($product_attributes as $attribute_name => $options):
+            // Orden deseado
+            $orden_atributos = array('pa_color', 'tamano', 'tamaño', 'pa_tamano');
+            $attributes_ordenados = array();
+
+            // Añadir en orden
+            foreach ($orden_atributos as $attr) {
+                if (isset($product_attributes[$attr])) {
+                    $attributes_ordenados[$attr] = $product_attributes[$attr];
+                }
+            }
+
+            // Añadir cualquier otro atributo que no esté en el orden
+            foreach ($product_attributes as $attr_name => $options) {
+                if (!isset($attributes_ordenados[$attr_name])) {
+                    $attributes_ordenados[$attr_name] = $options;
+                }
+            }
+
+            foreach ($attributes_ordenados as $attribute_name => $options):
                 $attribute_label = wc_attribute_label($attribute_name);
                 $sanitized_name = sanitize_title($attribute_name);
                 $has_multiple_options = count($options) > 1;
+
+                // ⭐ Detectar tipo de atributo
+                $is_size_attribute = (stripos($attribute_name, 'tamano') !== false || stripos($attribute_name, 'tamaño') !== false);
+                $is_color_attribute = (stripos($attribute_name, 'color') !== false);
                 ?>
 
                 <div class="custom-variation-select"
                     data-has-multiple="<?php echo $has_multiple_options ? 'true' : 'false'; ?>">
+
                     <?php if ($has_multiple_options): ?>
-                        <!-- Mostrar dropdown si hay múltiples opciones -->
-                        <select name="attribute_<?php echo $sanitized_name; ?>"
-                            data-attribute_name="attribute_<?php echo $sanitized_name; ?>"
-                            data-label="<?php echo esc_attr($attribute_label); ?>">
-                            <option value=""><?php echo esc_html($attribute_label); ?>: Selecciona un
-                                <?php echo strtolower(esc_html($attribute_label)); ?>
-                            </option>
-                            <?php foreach ($options as $option): ?>
-                                <option value="<?php echo esc_attr($option); ?>"><?php echo esc_html($option); ?></option>
-                            <?php endforeach; ?>
-                        </select>
+
+                        <?php if ($is_color_attribute): ?>
+                            <!-- ⭐ CÍRCULOS DE COLOR -->
+                            <div class="color-swatches-wrapper">
+                                <!-- <label class="variation-label"><?php echo esc_html($attribute_label); ?>:</label> -->
+                                <div class="color-swatches">
+                                    <input type="hidden" name="attribute_<?php echo $sanitized_name; ?>"
+                                        data-attribute_name="attribute_<?php echo $sanitized_name; ?>" value="">
+
+                                    <!-- ⭐ OPCIÓN "CUALQUIERA" -->
+                                    <button type="button" class="color-swatch color-swatch-any" data-value=""
+                                        data-color="cualquiera" title="Cualquiera">
+                                        <span class="color-swatch-inner">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                                            </svg>
+                                        </span>
+                                    </button>
+
+                                    <?php foreach ($options as $option): ?>
+                                        <button type="button" class="color-swatch" data-value="<?php echo esc_attr($option); ?>"
+                                            data-color="<?php echo esc_attr(strtolower($option)); ?>"
+                                            title="<?php echo esc_attr(ucfirst($option)); ?>">
+                                            <span class="color-swatch-inner"></span>
+                                        </button>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                        <?php else: ?>
+                            <!-- DROPDOWN para otros atributos (Tamaño, etc) -->
+                            <select name="attribute_<?php echo $sanitized_name; ?>"
+                                data-attribute_name="attribute_<?php echo $sanitized_name; ?>"
+                                data-label="<?php echo esc_attr($attribute_label); ?>">
+                                <option value=""><?php echo esc_html($attribute_label); ?>: Selecciona un
+                                    <?php echo strtolower(esc_html($attribute_label)); ?>
+                                </option>
+                                <?php foreach ($options as $option):
+                                    // ⭐ Si es tamaño, formatear bonito
+                                    if ($is_size_attribute) {
+                                        $clean_option = str_replace(' ', '', $option);
+                                        $partes = explode('x', $clean_option);
+
+                                        if (count($partes) === 3) {
+                                            $display_value = "Alto " . trim($partes[0]) . " x Ancho " . trim($partes[1]) . " x Fondo " . trim($partes[2]) . " cm";
+                                        } else {
+                                            $display_value = $option;
+                                        }
+                                    } else {
+                                        $display_value = $option;
+                                    }
+                                    ?>
+                                    <option value="<?php echo esc_attr($option); ?>">
+                                        <?php echo esc_html($display_value); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif; ?>
+
                     <?php else: ?>
                         <!-- Mostrar texto simple si solo hay una opción -->
+                        <?php
+                        $single_option = $options[0];
+
+                        // ⭐ Si es tamaño con una sola opción, formatear bonito
+                        if ($is_size_attribute) {
+                            $clean_option = str_replace(' ', '', $single_option);
+                            $partes = explode('x', $clean_option);
+
+                            if (count($partes) === 3) {
+                                $display_value = "Alto " . trim($partes[0]) . " x Ancho " . trim($partes[1]) . " x Fondo " . trim($partes[2]) . " cm";
+                            } else {
+                                $display_value = $single_option;
+                            }
+                        } else {
+                            $display_value = $single_option;
+                        }
+                        ?>
                         <div class="single-option">
                             <span class="option-label"><?php echo esc_html($attribute_label); ?>:</span>
-                            <span class="option-value"><?php echo esc_html($options[0]); ?></span>
+                            <span class="option-value"><?php echo esc_html($display_value); ?></span>
                         </div>
                         <input type="hidden" name="attribute_<?php echo $sanitized_name; ?>"
-                            value="<?php echo esc_attr($options[0]); ?>"
+                            value="<?php echo esc_attr($single_option); ?>"
                             data-attribute_name="attribute_<?php echo $sanitized_name; ?>" />
                     <?php endif; ?>
                 </div>
@@ -176,11 +266,50 @@ $a_medida = get_field('a_medida');
     <?php else: ?>
 
         <!-- Producto simple -->
-        <form class="cart"
-            action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
-            method="post" enctype='multipart/form-data'>
+        <?php
+    // ⭐ Mostrar color del producto simple (solo visual, sin funcionalidad)
+    $simple_color_attr = null;
+    foreach ($attributes as $attribute) {
+        $attr_name = $attribute->get_name();
+        if (stripos($attr_name, 'color') !== false) {
+            $simple_color_attr = $attribute;
+            break;
+        }
+    }
+    
+    if ($simple_color_attr):
+        $color_values = array();
+        if ($simple_color_attr->is_taxonomy()) {
+            $terms = wc_get_product_terms($product->get_id(), $simple_color_attr->get_name(), array('fields' => 'names'));
+            if (!is_wp_error($terms) && !empty($terms)) {
+                $color_values = $terms;
+            }
+        } else {
+            $color_values = $simple_color_attr->get_options();
+        }
+        
+        if (!empty($color_values)):
+    ?>
+        <div class="color-swatches-wrapper" style="margin-bottom: 30px;">
+            <!-- <label class="variation-label">Color:</label> -->
+            <div class="color-swatches">
+                <?php foreach ($color_values as $color): ?>
+                    <div class="color-swatch" data-color="<?php echo esc_attr(strtolower($color)); ?>" title="<?php echo esc_attr(ucfirst($color)); ?>">
+                        <span class="color-swatch-inner"></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php 
+        endif;
+    endif;
+    ?>
+    
+    <form class="cart"
+        action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
+        method="post" enctype='multipart/form-data'>
 
-            <div class="product-add-to-cart">
+        <div class="product-add-to-cart">
                 <?php
                 woocommerce_quantity_input(array(
                     'min_value' => 1,
@@ -221,17 +350,13 @@ $a_medida = get_field('a_medida');
         // Preparar contenido del acordeón
         $detalles_content = '';
 
-        // Color/Acabado de ACF
-        // if ($color_acabado) {
-        //     $detalles_content .= '<p><strong>Color/Acabado:</strong> ' . esc_html($color_acabado) . '</p>';
-        // }
-        
-        // Atributos del producto (excluyendo Color y Tamaño)
+        // Atributos del producto (excluyendo Color y Tamaño que ya se muestran arriba)
         foreach ($attributes as $attribute) {
             $attribute_label = wc_attribute_label($attribute->get_name());
 
-            // Saltar Color y Tamaño
-            if (strtolower($attribute_label) === 'color' || strtolower($attribute_label) === 'tamaño') {
+            // Saltar atributos que ya se muestran en variaciones
+            $attr_lower = strtolower($attribute_label);
+            if (in_array($attr_lower, array('color', 'tamaño', 'tamano'))) {
                 continue;
             }
 

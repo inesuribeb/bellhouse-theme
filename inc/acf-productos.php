@@ -10,6 +10,33 @@ if (function_exists('acf_add_local_field_group')):
         'title' => 'Información Adicional del Producto',
         'fields' => array(
 
+            // ⭐ NUEVO: Orientación de la card
+            array(
+                'key' => 'field_orientacion_card',
+                'label' => 'Orientación en Tienda',
+                'name' => 'orientacion_card',
+                'type' => 'radio',
+                'instructions' => 'Elige cómo se mostrará este producto en el grid de la tienda',
+                'choices' => array(
+                    'vertical' => 'Vertical (1 columna)',
+                    'horizontal' => 'Horizontal (2 columnas)',
+                ),
+                'default_value' => 'vertical',
+                'layout' => 'horizontal',
+            ),
+
+                // ⭐ NUEVO: Novedad
+            array(
+                'key' => 'field_novedad',
+                'label' => 'Novedad',
+                'name' => 'novedad',
+                'type' => 'true_false',
+                'instructions' => 'Marca si este producto es una novedad',
+                'message' => 'Este producto es una novedad',
+                'default_value' => 0,
+                'ui' => 1,
+            ),
+
             // Imagen Hover
             array(
                 'key' => 'field_imagen_hover',
@@ -54,7 +81,7 @@ if (function_exists('acf_add_local_field_group')):
                 'mime_types' => 'pdf',
             ),
 
-                // A Medida (Booleano)
+            // A Medida (Booleano)
             array(
                 'key' => 'field_a_medida',
                 'label' => 'Disponible a Medida',

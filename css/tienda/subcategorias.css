@@ -1,0 +1,154 @@
+/* ========================================
+   SUBCATEGORÍAS
+======================================== */
+
+.tienda-subcategorias {
+    width: 50%; /* ⭐ 50% centrado */
+    margin: 0 auto;
+    /* margin: 0; */
+    padding: 10px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.subcategorias-list {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: center; /* ⭐ Centrado si cabe todo */
+}
+
+.subcategorias-list::-webkit-scrollbar {
+    display: none;
+}
+
+.subcategoria-item {
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--color-medium-grey);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.subcategoria-item:hover {
+    color: var(--color-dark);
+}
+
+.subcategoria-item.active {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+/* ⭐ Flechas (ocultas por defecto) */
+.subcategoria-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 40px;
+    align-items: center;
+    z-index: 10;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+    cursor: pointer; /* ⭐ AÑADIDO */
+
+}
+
+.subcategoria-arrow:hover {
+    opacity: 0.8; /* ⭐ AÑADIDO: feedback visual */
+}
+
+.subcategoria-arrow-left {
+    left: 0;
+    justify-content: flex-start;
+    background: linear-gradient(to right, var(--color-background) 100%, transparent);
+    padding-left: 5px;
+}
+
+.subcategoria-arrow-right {
+    right: 0;
+    justify-content: flex-end;
+    background: linear-gradient(to left, var(--color-background) 100%, transparent);
+    padding-right: 5px;
+}
+
+.subcategoria-arrow svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    color: var(--color-dark);
+    opacity: 0.7;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .tienda-subcategorias {
+        width: calc(100% - 40px); /* ⭐ Más ancho en tablet */
+        margin: 0 20px;
+        padding: 25px 0;
+    }
+    
+    .subcategorias-list {
+        gap: 25px;
+        justify-content: flex-start; /* ⭐ Alineado a la izquierda */
+    }
+    
+    .subcategoria-item {
+        font-size: 13px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE MÓVIL
+======================================== */
+
+@media (max-width: 768px) {
+    .tienda-subcategorias {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+        padding: 20px 0;
+    }
+    
+    .subcategorias-list {
+        gap: 30px;
+        padding: 10px 0;
+    }
+    
+    .subcategoria-item {
+        font-size: 15px;
+    }
+    
+    /* ⭐ Flechas visibles */
+    .subcategoria-arrow {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .tienda-subcategorias {
+        padding: 15px 0;
+    }
+    
+    .subcategorias-list {
+        gap: 25px;
+    }
+    
+    .subcategoria-item {
+        font-size: 14px;
+    }
+}

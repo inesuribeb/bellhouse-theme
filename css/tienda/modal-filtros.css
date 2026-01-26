@@ -1,0 +1,232 @@
+/* ========================================
+   MODAL FILTROS - OVERLAY
+======================================== */
+
+.filtrar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000; /* ⭐ Por encima del header */
+    display: none;
+    pointer-events: none;
+}
+
+.filtrar-modal.active {
+    display: block;
+    pointer-events: auto;
+}
+
+.filtrar-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.filtrar-modal.active .filtrar-modal-overlay {
+    opacity: 1;
+}
+
+/* ========================================
+   MODAL FILTROS - PANEL LATERAL
+======================================== */
+
+.filtrar-modal-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    max-width: 90vw;
+    height: 100%;
+    background-color: var(--color-background);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.filtrar-modal.active .filtrar-modal-panel {
+    transform: translateX(0);
+}
+
+
+/* ========================================
+   HEADER CON TABS
+======================================== */
+
+.filtrar-modal-header {
+    display: flex;
+    justify-content: center; /* ⭐ CAMBIO: centrar */
+    align-items: center;
+    padding: 30px;
+    /* border-bottom: 1.5px solid var(--color-light-grey); */
+    position: relative; /* ⭐ AÑADIR: para el absolute del close */
+}
+
+.filtrar-modal-tabs {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.filtrar-modal-tab {
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-medium-grey);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.filtrar-modal-tab:hover {
+    color: var(--color-dark);
+}
+
+.filtrar-modal-tab.active {
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.filtrar-modal-separator {
+    color: var(--color-dark);
+    font-size: 14px;
+}
+
+.filtrar-modal-close {
+    position: absolute; /* ⭐ CAMBIO: en absoluto */
+    right: 30px; /* ⭐ AÑADIR: pegado a la derecha */
+    top: 50%; /* ⭐ AÑADIR: centrado verticalmente */
+    transform: translateY(-50%); /* ⭐ AÑADIR */
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.filtrar-modal-close:hover {
+    opacity: 0.7;
+}
+
+.filtrar-modal-close svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-dark);
+}
+
+/* ========================================
+   CONTENIDO
+======================================== */
+
+.filtrar-modal-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* ========================================
+   FOOTER CON BOTÓN BORRAR
+======================================== */
+
+/* ========================================
+   FOOTER CON BOTONES
+======================================== */
+
+.filtrar-modal-footer {
+    padding: 30px;
+    border-top: 1.5px solid var(--color-light-grey);
+    display: flex;
+    gap: 15px;
+}
+
+.filtrar-modal-borrar,
+.filtrar-modal-aplicar {
+    flex: 1;
+    font-family: var(--font-interactive);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.filtrar-modal-aplicar {
+    color: var(--color-background);
+    background-color: var(--color-dark);
+}
+
+.filtrar-modal-aplicar:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.filtrar-modal-aplicar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.filtrar-modal-borrar {
+    color: var(--color-dark);
+    background-color: transparent;
+    border: 1.5px solid var(--color-dark);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.filtrar-modal-borrar.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filtrar-modal-borrar.active:hover {
+    background-color: var(--color-dark);
+    color: var(--color-background);
+}
+
+
+
+/* ⭐ Cuando solo hay tab FILTRAR */
+.filtrar-modal-tabs.solo-filtrar {
+    justify-content: center;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+    .filtrar-modal-panel {
+        width: 100%;
+        max-width: 100vw;
+    }
+    
+    .filtrar-modal-header {
+        padding: 20px;
+    }
+    
+    .filtrar-modal-content {
+        padding: 20px;
+    }
+    
+    .filtrar-modal-footer {
+        padding: 20px;
+        flex-direction: column;
+    }
+}

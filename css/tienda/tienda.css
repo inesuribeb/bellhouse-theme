@@ -1,0 +1,47 @@
+/* ========================================
+   TIENDA ARCHIVE
+======================================== */
+
+/* .tienda-archive {
+    width: 100%;
+    background-color: var(--color-background);
+    padding-top: 100px;
+} */
+
+.tienda-archive {
+    width: 100%;
+    background-color: var(--color-background);
+    padding-top: 100px; /* Espacio inicial para el header */
+}
+
+/* ========================================
+   CONTENEDOR STICKY PARA CATEGORÍAS + SUBCATEGORÍAS
+======================================== */
+
+.tienda-nav-sticky {
+    position: sticky;
+    top: 0; /* ⭐ CAMBIO: Se pega al top, pero el JS calculará el offset del header */
+    z-index: 999; /* ⭐ Justo debajo del header (1000) */
+    background-color: var(--color-background);
+    transition: top 0.3s ease;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  */
+}
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .tienda-archive {
+        padding-top: 80px; /* ⭐ Menos padding para tablet */
+    }
+}
+
+/* ========================================
+   RESPONSIVE MÓVIL
+======================================== */
+
+@media (max-width: 768px) {
+    .tienda-archive {
+        padding-top: 60px; /* ⭐ Menos padding para móvil */
+    }
+}

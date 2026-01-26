@@ -1,0 +1,64 @@
+/* ========================================
+   GRID DE PRODUCTOS
+======================================== */
+
+.tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ⭐ 3 columnas iguales */
+    gap: 0px;
+    margin: 20px 0px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(auto, 1fr); 
+}
+
+/* Mensaje sin productos */
+.no-products {
+    text-align: center;
+    padding: 80px 30px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-medium-grey);
+}
+
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+    .tienda-grid {
+        grid-template-columns: repeat(2, 1fr); /* ⭐ 2 columnas */
+        margin: 50px 0px;
+    }
+    
+    .no-products {
+        padding: 60px 30px;
+        font-size: 15px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE MÓVIL
+======================================== */
+
+@media (max-width: 768px) {
+    .tienda-grid {
+        grid-template-columns: repeat(2, 1fr); /* ⭐ 2 columnas */
+        margin: 40px 0px;
+    }
+    
+    .no-products {
+        padding: 50px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tienda-grid {
+        margin: 30px 0px;
+    }
+}

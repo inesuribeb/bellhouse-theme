@@ -41,38 +41,20 @@
     overflow: hidden;
 }
 
-/* ⭐ NUEVO: Forzar que sticky no se "despegue" */
-.product-info {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    gap: 0;
-    align-items: flex-start;
-    position: relative;
-    min-height: 100vh; 
-}
-
-/* Wrapper principal (contiene imagen + miniaturas) */
-.galeria-main-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
 /* Imagen principal */
 .galeria-main {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
-    background-color: var(--color-background);
+    background-color: var(--color-light-grey);
     cursor: none;
 }
 
 .galeria-main img {
     width: 100%;
     height: auto;
+    /* min-height: 140vh;  */
     object-fit: cover;
     display: block;
     position: relative;
@@ -88,7 +70,7 @@
     display: flex;
     flex-direction: row;
     gap: 12px;
-    padding: 10px 60px;
+    padding: 10px;
     z-index: 10;
     background-color: #f5f3f0d3;
     box-sizing: border-box;
@@ -98,16 +80,6 @@
     height: 16vh;
     justify-content: center;
     align-items: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.galeria-thumbs::-webkit-scrollbar {
-    display: none;
 }
 
 .galeria-thumbs.visible {
@@ -116,16 +88,17 @@
 }
 
 .thumb {
-    height: 100%;
+    /* En lugar de flex: 1, usar height fijo */
+    height: 100%; /* Ocupa toda la altura del contenedor */
     aspect-ratio: 4 / 5;
-    width: auto;
+    width: auto; /* El ancho se calcula automáticamente según aspect-ratio */
     cursor: pointer;
     border: none;
     transition: all 0.3s ease;
     overflow: hidden;
     position: relative;
     border-radius: 0;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Evita que se compriman */
 }
 
 /* Overlay blanquecino semitransparente por defecto */
@@ -160,54 +133,9 @@
     display: block;
 }
 
-/* Flechas de navegación de thumbs */
-.galeria-thumbs-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(245, 243, 240, 0.9);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 11;
-    transition: all 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-}
 
-.galeria-thumbs.visible .galeria-thumbs-arrow {
-    opacity: 0.7;
-    pointer-events: auto;
-}
 
-.galeria-thumbs-arrow:hover {
-    opacity: 1 !important;
-}
 
-.galeria-thumbs-arrow svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--color-dark);
-}
-
-.galeria-thumbs-arrow-left {
-    left: 10px;
-}
-
-.galeria-thumbs-arrow-right {
-    right: 10px;
-}
-
-.galeria-thumbs-arrow.hidden {
-    display: none;
-}
-
-/* Cursor personalizado */
 .custom-cursor {
     position: fixed;
     width: 30px;
@@ -234,6 +162,11 @@
     opacity: 1;
 }
 
+
+
+
+
+
 /* ========================================
    MODAL DE GALERÍA
 ======================================== */
@@ -246,7 +179,7 @@
     width: 100%;
     height: 100vh;
     background-color: var(--color-background);
-    z-index: 1000000000;
+    z-index: 10000;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -263,6 +196,7 @@
     align-items: center;
     padding: 20px 30px;
     gap: 20px;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
 
 .modal-close {
@@ -287,10 +221,8 @@
 }
 
 .modal-product-name {
-    font-family: var(--font-texts);
-    text-transform: uppercase;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 300;
     margin: 0;
     color: var(--color-dark);
 }
@@ -335,7 +267,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    z-index: 1000000001;
+    z-index: 10001;
     opacity: 0;
     transition: opacity 0.2s ease;
     transform: translate(-50%, -50%);
@@ -385,6 +317,7 @@
 /* Footer del modal */
 .modal-footer {
     padding: 20px 40px;
+    /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
     display: flex;
     flex-direction: column;
     justify-content: center;

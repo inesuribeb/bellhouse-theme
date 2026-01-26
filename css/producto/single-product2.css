@@ -47,10 +47,12 @@
 
 /* Nombre del producto */
 .product-name {
+    /* font-family: var(--font-serif);
+    font-size: 52px; */
     font-family: var(--font-texts);
     font-size: 42px;
-    letter-spacing: -1px;
-    font-weight: 300;
+    letter-spacing: -2px;
+    font-weight: 200;
     line-height: 1.1;
     margin: 0;
     text-transform: uppercase;
@@ -175,15 +177,17 @@ form.variations_form .woocommerce-variation-price {
     color: var(--color-light);
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .custom-add-to-cart-button:hover:not(:disabled) {
-    background-color: var(--color-corporative);
+    /* background-color: var(--color-corporative); */
+    opacity: 0.7;
 }
 
 .custom-add-to-cart-button:disabled {
-    background-color: var(--color-light-grey);
+    background-color: var(--color-chocolate);
+    opacity: 0.5;
     cursor: not-allowed;
     opacity: 0.5;
 }
@@ -344,4 +348,190 @@ padding-top: 40px;
 .button-download:hover,
 .button-contacto:hover {
     background-color: var(--color-corporative);
+}
+
+
+/* ========================================
+   COLOR SWATCHES (círculos de color)
+======================================== */
+
+.color-swatches-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.variation-label {
+    font-family: var(--font-texts);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-dark);
+}
+
+.color-swatches {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    padding: 0px;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    border-color: var(--color-dark);
+}
+
+.color-swatch.selected {
+    border-color: var(--color-dark);
+}
+
+.color-swatch-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ⭐ TODOS LOS COLORES */
+
+/* Amarillo */
+.color-swatch[data-color="amarillo"] .color-swatch-inner {
+    background-color: #FFD700;
+}
+
+/* Azul */
+.color-swatch[data-color="azul"] .color-swatch-inner {
+    background-color: #5373A6;
+}
+
+/* Beige */
+.color-swatch[data-color="beige"] .color-swatch-inner {
+    background-color: #F5F5DD;
+}
+
+/* Blanco */
+.color-swatch[data-color="blanco"] .color-swatch-inner {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0; /* Más visible */
+}
+
+/* Bronce */
+.color-swatch[data-color="bronce"] .color-swatch-inner {
+    background: linear-gradient(135deg, #CD7F32 0%, #B8860B 100%);
+}
+
+/* Crema */
+.color-swatch[data-color="crema"] .color-swatch-inner {
+    background-color: #EDE8DF;
+}
+
+/* Dorado */
+.color-swatch[data-color="dorado"] .color-swatch-inner {
+    background-color: #DBA521;
+}
+
+/* Gris */
+.color-swatch[data-color="gris"] .color-swatch-inner {
+    background-color: #CEC9CA;
+}
+
+/* Marrón */
+.color-swatch[data-color="marrón"] .color-swatch-inner,
+.color-swatch[data-color="marron"] .color-swatch-inner {
+    background-color: #988677;
+}
+
+/* Morado */
+.color-swatch[data-color="morado"] .color-swatch-inner {
+    background-color: #9B59B6;
+}
+
+/* Mostaza */
+.color-swatch[data-color="mostaza"] .color-swatch-inner {
+    background-color: #E1AD01;
+}
+
+/* Multicolor */
+.color-swatch[data-color="multicolor"] .color-swatch-inner {
+    background: conic-gradient(
+        from 0deg,
+        #FF0000 0deg 60deg,
+        #FF7F00 60deg 120deg,
+        #FFFF00 120deg 180deg,
+        #00FF00 180deg 240deg,
+        #0000FF 240deg 300deg,
+        #8B00FF 300deg 360deg
+    );
+}
+
+/* Naranja */
+.color-swatch[data-color="naranja"] .color-swatch-inner {
+    background-color: #F89902;
+}
+
+/* Negro */
+.color-swatch[data-color="negro"] .color-swatch-inner {
+    background-color: #2C2C2C;
+}
+
+/* Plata */
+.color-swatch[data-color="plata"] .color-swatch-inner {
+    background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 100%);
+}
+
+/* Rojo */
+.color-swatch[data-color="rojo"] .color-swatch-inner {
+    background-color: #FE0300;
+}
+
+/* Rosa */
+.color-swatch[data-color="rosa"] .color-swatch-inner {
+    background-color: #FFC0CB;
+}
+
+/* Terracota */
+.color-swatch[data-color="terracota"] .color-swatch-inner {
+    background-color: #E2725B;
+}
+
+/* Verde */
+.color-swatch[data-color="verde"] .color-swatch-inner {
+    background-color: #348E34;
+}
+
+/* ⭐ CÍRCULO "CUALQUIERA" CON X */
+.color-swatch-any .color-swatch-inner {
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.color-swatch-any svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-medium-grey);
+    opacity: 0.5;
+}
+
+.color-swatch-any:hover svg,
+.color-swatch-any.selected svg {
+    opacity: 1;
+}
+
+/* Cuando está seleccionado "Cualquiera", mostrar borde */
+.color-swatch-any.selected {
+    border-color: var(--color-dark);
 }
