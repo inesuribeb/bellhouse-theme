@@ -4,12 +4,14 @@
 
 .shop-the-look {
     padding: 100px 20px;
-    background-color: var(--color-light);
+    background-color: var(--color-background);
+    display: flex;
 }
 
 .shop-container {
-    max-width: 1400px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .shop-title {
@@ -23,116 +25,360 @@
 }
 
 .shop-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .shop-card {
+    flex: 1;
+    position: relative;
     background: var(--color-background);
-    transition: transform 0.3s ease;
-}
-
-.shop-card:hover {
-    transform: translateY(-5px);
+    display: flex;
 }
 
 .shop-card-link {
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 100%;
+    position: relative;
 }
 
+/* Imagen de fondo */
 .shop-card-image {
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/5;
     overflow: hidden;
-    background: white;
+    background: var(--color-corporative);
 }
 
 .shop-card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    object-fit: cover !important;
 }
 
-.shop-card:hover .shop-card-image img {
-    transform: scale(1.05);
+/* ========================================
+   CUADRO EXPANDIBLE
+======================================== */
+
+.shop-card-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    aspect-ratio: 1/1;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.shop-card-content {
-    padding: 20px;
-    text-align: center;
+.shop-card-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f5f3f085;
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 43px; /* Altura del label */
 }
 
-.shop-card-title {
+.shop-card-box:hover::before {
+    height: 100%; /* Se expande al 100% */
+    background: #F5F3F0; /* Opacidad total */
+}
+
+/* ========================================
+   LABEL (visible sin hover)
+======================================== */
+
+.shop-card-label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    padding: 10px 15px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.shop-card-box:hover .shop-card-label {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Grupo izquierdo: dot + "COMPRAR" */
+.shop-card-label-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Grupo derecho: categoría + flecha */
+.shop-card-label-right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.shop-card-dot {
+    font-size: 20px;
+    line-height: 1;
+    position: relative;
+    top: -2px;
+}
+
+.shop-card-label-text {
     font-family: var(--font-texts);
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 500;
     letter-spacing: -0.5px;
     color: var(--color-dark);
+}
+
+.shop-card-category {
+    font-family: var(--font-texts);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: var(--color-dark);
+}
+
+.shop-card-arrow {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    color: var(--color-dark);
+    flex-shrink: 0;
+}
+
+/* ========================================
+   CONTENIDO HOVER (visible con hover)
+======================================== */
+
+.shop-card-hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease 0.1s;
+    padding: 30px;
+    justify-content: center;
+}
+
+.shop-card-box:hover .shop-card-hover-content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.shop-card-hover-title {
+    font-family: var(--font-texts);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: var(--color-dark);
+    margin: 0 0 4px 0;
+}
+
+.shop-card-hover-subtitle {
+    font-family: var(--font-texts);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: var(--color-accent);
+    text-transform: uppercase;
     margin: 0 0 10px 0;
 }
 
-.shop-card-price {
-    font-family: var(--font-texts);
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--color-accent);
-    margin: 0 0 15px 0;
+.shop-card-hover-image {
+    width: 100%;
+    max-width: 100%;
+    max-height: 50%; /* Limita la altura máxima */
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.shop-card-button {
+.shop-card-hover-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.shop-card-hover-button {
     display: inline-block;
-    font-family: var(--font-interactive);
-    font-size: 14px;
+
+    font-family: var(--font-texts);
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1px;
+    letter-spacing: -0.5px;
+    color: var(--color-accent);
     text-transform: uppercase;
-    color: var(--color-dark);
-    padding: 10px 25px;
-    border: 1px solid var(--color-dark);
-    transition: all 0.3s ease;
+    padding: 0;
+    border: none;
+    /* border-bottom: 1px solid var(--color-dark); */
 }
 
-.shop-card:hover .shop-card-button {
-    background-color: var(--color-dark);
-    color: white;
-}
 
 /* ========================================
    RESPONSIVE
 ======================================== */
 
-@media (max-width: 1024px) {
+/* Scroll horizontal en pantallas menores de 1400px */
+@media (max-width: 1400px) {
     .shop-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 20px;
+    }
+    
+    .shop-grid::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    .shop-card {
+        flex: 0 0 400px; /* Ancho fijo para cada card */
+        min-width: 400px;
+    }
+}
+
+/* Tablet y móvil: siempre expandido */
+@media (max-width: 1024px) {
+    .shop-the-look {
+        padding: 80px 20px;
     }
     
     .shop-title {
         font-size: 40px;
         margin-bottom: 40px;
     }
+    
+    .shop-grid {
+        gap: 15px;
+        padding: 0 20px 20px 20px;
+    }
+    
+    .shop-card {
+        flex: 0 0 350px;
+        min-width: 350px;
+    }
+    
+    /* Siempre expandido en tablet */
+    .shop-card-box {
+        width: 70%;
+    }
+    
+    .shop-card-box::before {
+        height: 100% !important; /* Siempre expandido */
+        background: #f5f3f085 !important; /* Siempre semitransparente */
+    }
+    
+    /* Ocultar label */
+    .shop-card-label {
+        display: none;
+    }
+    
+    /* Mostrar contenido siempre */
+    .shop-card-hover-content {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    
+    .shop-card-hover-title {
+        font-size: 16px;
+    }
+    
+    .shop-card-hover-subtitle {
+        font-size: 12px;
+    }
+    
+    .shop-card-hover-image {
+        max-height: 45%;
+    }
 }
 
 @media (max-width: 768px) {
     .shop-the-look {
-        padding: 60px 20px;
-    }
-    
-    .shop-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        padding: 60px 0px;
     }
     
     .shop-title {
-        font-size: 36px;
-        margin-bottom: 30px;
+        font-size: 40px;
+        margin-bottom: 60px;
     }
     
-    .shop-card-title {
-        font-size: 16px;
+    .shop-grid {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .shop-card {
+        flex: 0 0 250px;
+        min-width: 250px;
+    }
+    
+    .shop-card-box {
+        width: 70%;
+    }
+    
+    .shop-card-hover-title {
+        font-size: 15px;
+    }
+    
+    .shop-card-hover-subtitle {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    .shop-card-hover-image {
+        max-height: 40%;
+        margin-bottom: 15px;
+    }
+    
+    .shop-card-hover-button {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-title {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .shop-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+    }
+    
+    .shop-card-box {
+        width: 70%;
+        padding: 20px;
+    }
+    
+    .shop-card-hover-content {
+        padding: 20px;
     }
 }
