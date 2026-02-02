@@ -414,6 +414,24 @@ if (function_exists('acf_add_local_field_group')):
                 'return_format' => 'array',
                 'preview_size' => 'thumbnail',
             ),
+                // Shop the Look - Productos relacionados
+            array(
+                'key' => 'field_shop_the_look',
+                'label' => 'Shop the Look - Productos',
+                'name' => 'shop_the_look_productos',
+                'type' => 'relationship',
+                'instructions' => 'Selecciona hasta 3 productos para mostrar en "Shop the Look"',
+                'post_type' => array(
+                    0 => 'product', // WooCommerce products
+                ),
+                'filters' => array(
+                    0 => 'search',
+                    1 => 'post_type',
+                ),
+                'return_format' => 'object',
+                'min' => 0,
+                'max' => 3, // Máximo 3 productos
+            ),
         ),
         'location' => array(
             array(
@@ -1056,7 +1074,8 @@ require_once get_stylesheet_directory() . '/inc/acf-home-tienda.php';
 require_once get_stylesheet_directory() . '/inc/ajax-home-tienda.php';
 // Pasar ajaxurl a JavaScript
 add_action('wp_head', 'bellhouse_ajax_url');
-function bellhouse_ajax_url() {
+function bellhouse_ajax_url()
+{
     echo '<script>const ajaxurl = "' . admin_url('admin-ajax.php') . '";</script>';
 }
 
@@ -1093,6 +1112,7 @@ function bellhouse_proyecto_single_styles()
 {
     if (is_singular('proyectos')) {
         wp_enqueue_style('bellhouse-proyecto-single', get_stylesheet_directory_uri() . '/css/proyecto/proyecto-single.css', array(), '1.0');
+        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.0');
         wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), '1.0', true);
         wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), '1.0', true); // ⭐ NUEVO
     }
