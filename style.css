@@ -79,6 +79,18 @@ html {
     background-color: var(--color-background);
 } */
 
+/* Selección de texto */
+::selection {
+    background-color: var(--color-corporative);
+    color: var(--color-chocolate); /* Color del texto seleccionado */
+}
+
+/* Para Firefox */
+::-moz-selection {
+    background-color: var(--color-corporative);
+    color: var(--color-chocolate);
+}
+
 /* Editor's Note - Fuente local */
 @font-face {
     font-family: 'Editors Note';

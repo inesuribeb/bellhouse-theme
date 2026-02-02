@@ -1293,6 +1293,14 @@ function bellhouse_rgpd_styles()
     if (is_page('cookies')) {
         wp_enqueue_style('bellhouse-cookies', get_stylesheet_directory_uri() . '/css/rgdp/cookies.css', array(), '1.0');
     }
+
+    if (is_page('compras')) {
+        wp_enqueue_style('bellhouse-compras', get_stylesheet_directory_uri() . '/css/rgdp/compras.css', array(), '1.0');
+    }
+
+    if (is_page('devoluciones')) {
+        wp_enqueue_style('bellhouse-devoluciones', get_stylesheet_directory_uri() . '/css/rgdp/devoluciones.css', array(), '1.0');
+    }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_rgpd_styles');
 
@@ -1311,7 +1319,6 @@ add_action('wp_enqueue_scripts', 'bellhouse_404_styles');
 require_once get_stylesheet_directory() . '/inc/acf-tienda.php';
 
 
-// Cargar CSS de tienda
 // Cargar CSS de tienda
 function bellhouse_tienda_styles()
 {
@@ -1349,19 +1356,6 @@ function bellhouse_tienda_styles()
 }
 add_action('wp_enqueue_scripts', 'bellhouse_tienda_styles');
 
-// Cambiar slug de categorías de productos
-// add_filter('register_taxonomy_args', 'bellhouse_change_product_cat_slug', 10, 2);
-
-// function bellhouse_change_product_cat_slug($args, $taxonomy) {
-//     if ('product_cat' === $taxonomy) {
-//         $args['rewrite'] = array(
-//             'slug' => 'tienda',
-//             'with_front' => false,
-//             'hierarchical' => true,
-//         );
-//     }
-//     return $args;
-// }
 
 
 // ACF: Novedades
