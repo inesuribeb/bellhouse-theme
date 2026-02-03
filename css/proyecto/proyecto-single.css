@@ -139,6 +139,7 @@
     line-height: 0.9;
     margin: 0;
     color: var(--color-dark);
+    width: 70%;
 }
 
 .intro-texto {
