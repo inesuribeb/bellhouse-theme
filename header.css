@@ -348,6 +348,41 @@ body.single-product .fixed-header:hover {
 
 
 
+/* ========================================
+   HEADER TRANSPARENTE EN PROYECTOS (solo en hero)
+======================================== */
+
+body.single-proyectos .fixed-header.en-hero {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+body.single-proyectos .fixed-header.en-hero .menu-toggle,
+body.single-proyectos .fixed-header.en-hero .header-icons span {
+    color: var(--color-light) !important;
+    transition: color 0.3s ease;
+}
+
+body.single-proyectos .fixed-header.en-hero .custom-logo {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+/* Hover mientras está en hero → normal */
+body.single-proyectos .fixed-header.en-hero:hover {
+    background-color: var(--color-background) !important;
+}
+
+body.single-proyectos .fixed-header.en-hero:hover .menu-toggle,
+body.single-proyectos .fixed-header.en-hero:hover .header-icons span {
+    color: var(--color-dark) !important;
+}
+
+body.single-proyectos .fixed-header.en-hero:hover .custom-logo {
+    filter: none !important;
+}
+
+
 
 /* ========================================
    LAYOUT SIN TIENDA (4 cards)

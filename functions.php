@@ -1125,6 +1125,7 @@ function bellhouse_proyecto_single_styles()
         wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.2');
         wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), '1.0', true);
         wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), '1.0', true); // ⭐ NUEVO
+        wp_enqueue_script('bellhouse-proyecto-header', get_stylesheet_directory_uri() . '/js/proyecto-header.js', array(), '1.0', true);
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_proyecto_single_styles');
