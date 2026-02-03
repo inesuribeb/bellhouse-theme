@@ -1221,6 +1221,8 @@ function bellhouse_producto_scripts()
         wp_enqueue_script('bellhouse-producto-scroll', get_stylesheet_directory_uri() . '/js/producto-scroll.js', array(), '1.0', true);
         // ⭐ CAMBIO: Ahora depende de producto-variaciones
         wp_enqueue_script('bellhouse-producto-acordeones', get_stylesheet_directory_uri() . '/js/producto-acordeones.js', array('jquery', 'bellhouse-producto-variaciones'), '1.0', true);
+        wp_enqueue_script('bellhouse-producto-header', get_stylesheet_directory_uri() . '/js/producto-header.js', array(), '1.0', true);
+
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_producto_scripts');

@@ -332,6 +332,20 @@ body.single-post .fixed-header {
 }
 
 
+/* ========================================
+   HEADER TRANSPARENTE EN PRODUCTO SINGLE
+======================================== */
+
+body.single-product .fixed-header {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+body.single-product .fixed-header.scrolled,
+body.single-product .fixed-header:hover {
+    background-color: var(--color-background) !important;
+}
+
 
 
 

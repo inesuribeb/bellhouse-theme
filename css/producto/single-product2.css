@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    /* gap: 30px; */
     padding-left: 120px;
     padding-right: 120px;
     padding-top: 150px;
@@ -21,6 +21,7 @@
     text-transform: uppercase;
     display: flex;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .product-breadcrumb a {
@@ -57,21 +58,27 @@
     margin: 0;
     text-transform: uppercase;
     color: var(--color-dark);
+    padding-bottom: 15px;
 }
 
 /* Precio */
 .product-price {
     font-family: var(--font-texts);
-    font-size: 20px;
+    font-size: 16px;
     letter-spacing: -1px;
     font-weight: 400;
     color: var(--color-dark);
+    padding-bottom: 10px;
+
 }
 
 .product-price del {
     color: var(--color-medium-grey);
     margin-left: 10px;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 16px;
+    padding-bottom: 10px;
+
 }
 
 .product-price ins {
@@ -96,7 +103,9 @@ form.variations_form .woocommerce-variation-price {
 .custom-variations-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    padding-top: 10px;
+    /* padding-bottom: 100px; */
 }
 
 .custom-variation-select {
@@ -169,15 +178,18 @@ form.variations_form .woocommerce-variation-price {
     flex: 1;
     padding: 12px 30px;
     font-family: var(--font-interactive);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     background-color: var(--color-chocolate);
     color: var(--color-light);
+    /* background-color: var(--color-dark);
+    color: var(--color-light); */
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    /* margin-top: 40px; */
 }
 
 .custom-add-to-cart-button:hover:not(:disabled) {
@@ -241,16 +253,16 @@ form.variations_form .woocommerce-variation-price {
 ======================================== */
 
 .product-short-description {
-padding-top: 40px;
+padding-top: 70px;
 }
 
 .product-short-description,
 .product-description {
     font-family: var(--font-texts);
-    font-size: 16px;
-    line-height: 1.2;
+    font-size: 14px;
+    line-height: 1.1;
     letter-spacing: 0px;
-    font-weight: 400;
+    font-weight: 300;
     color: var(--color-dark);
 }
 
@@ -268,7 +280,7 @@ padding-top: 40px;
     flex-direction: column;
     gap: 0;
     border-top: 1px solid var(--color-light-grey);
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 .acordeon-item {
@@ -280,7 +292,7 @@ padding-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 5px 0;
     font-family: var(--font-texts);
     font-size: 16px;
     font-weight: 400;
@@ -292,12 +304,12 @@ padding-top: 40px;
     transition: color 0.3s ease;
 }
 
-.acordeon-header:hover {
+/* .acordeon-header:hover {
     color: var(--color-corporative);
-}
+} */
 
 .acordeon-icon {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
     transition: transform 0.3s ease;
 }
@@ -334,20 +346,24 @@ padding-top: 40px;
 .button-contacto {
     display: inline-block;
     margin-top: 10px;
-    padding: 12px 24px;
+    /* padding: 12px 24px; */
+    padding: 0px;
     font-family: var(--font-texts);
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    /* text-transform: uppercase; */
+    /* letter-spacing: 1px; */
+    /* background-color: var(--color-dark); */
+    /* color: var(--color-light); */
+    background-color: transparent;
+    color: var(--color-accent);
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .button-download:hover,
 .button-contacto:hover {
-    background-color: var(--color-corporative);
+    /* background-color: var(--color-corporative); */
+    text-decoration: underline;
 }
 
 
@@ -358,7 +374,7 @@ padding-top: 40px;
 .color-swatches-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .variation-label {
@@ -370,7 +386,7 @@ padding-top: 40px;
 
 .color-swatches {
     display: flex;
-    gap: 4px;
+    gap: 2px;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -378,7 +394,7 @@ padding-top: 40px;
 .color-swatch {
     width: 30px;
     height: 30px;
-    border: 2px solid transparent;
+    border: 1.5px solid transparent;
     border-radius: 50%;
     padding: 0px;
     background: none;
@@ -400,7 +416,9 @@ padding-top: 40px;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    border: 1px solid transparent;
+
 }
 
 /* ⭐ TODOS LOS COLORES */
@@ -534,4 +552,137 @@ padding-top: 40px;
 /* Cuando está seleccionado "Cualquiera", mostrar borde */
 .color-swatch-any.selected {
     border-color: var(--color-dark);
+}
+
+
+
+/* ========================================
+   RESPONSIVE PRODUCTO SINGLE - DETALLES
+======================================== */
+
+@media (max-width: 1024px) {
+    /* Detalles toman ancho completo */
+    .product-detalles {
+        flex: none;
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 40px;
+    }
+
+    .product-name {
+        font-size: 36px;
+        letter-spacing: -1.5px;
+    }
+
+    .product-price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detalles {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        gap: 20px;
+    }
+
+    .product-name {
+        font-size: 30px;
+        letter-spacing: -1px;
+    }
+
+    .product-price {
+        font-size: 17px;
+    }
+
+    .product-price del {
+        font-size: 17px;
+    }
+
+    /* Botones ancho completo */
+    .custom-add-to-cart-wrapper,
+    .product-add-to-cart {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .custom-add-to-cart-button,
+    .add-to-cart-button {
+        flex: 1;
+    }
+
+    /* Acordeones */
+    .acordeon-header {
+        font-size: 15px;
+        padding: 15px 0;
+    }
+
+    .acordeon-content {
+        font-size: 14px;
+    }
+
+    /* Descripción */
+    .product-short-description {
+        padding-top: 20px;
+    }
+
+    .product-short-description,
+    .product-description {
+        font-size: 15px;
+    }
+
+    /* Botones download/contacto ancho completo */
+    .button-download,
+    .button-contacto {
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-detalles {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 25px;
+        gap: 15px;
+    }
+
+    .product-name {
+        font-size: 26px;
+        letter-spacing: -0.5px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .product-price del {
+        font-size: 16px;
+        margin-left: 6px;
+    }
+
+    /* Input cantidad más pequeño */
+    .custom-add-to-cart-wrapper input[type="number"],
+    .product-add-to-cart input[type="number"] {
+        width: 50px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* Botones más compactos */
+    .custom-add-to-cart-button,
+    .add-to-cart-button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    /* Color swatches un poco más grandes en móvil para tacto */
+    .color-swatch {
+        width: 34px;
+        height: 34px;
+    }
 }
