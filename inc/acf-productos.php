@@ -25,7 +25,7 @@ if (function_exists('acf_add_local_field_group')):
                 'layout' => 'horizontal',
             ),
 
-                // ⭐ NUEVO: Novedad
+            // ⭐ NUEVO: Novedad
             array(
                 'key' => 'field_novedad',
                 'label' => 'Novedad',
@@ -91,6 +91,25 @@ if (function_exists('acf_add_local_field_group')):
                 'message' => 'Este producto está disponible a medida',
                 'default_value' => 0,
                 'ui' => 1,
+            ),
+
+                // Combínalo con - Productos relacionados
+            array(
+                'key' => 'field_combinalo_con',
+                'label' => 'Combínalo con - Productos',
+                'name' => 'combinalo_con_productos',
+                'type' => 'relationship',
+                'instructions' => 'Selecciona hasta 3 productos para mostrar en "Combínalo con"',
+                'post_type' => array(
+                    0 => 'product', // WooCommerce products
+                ),
+                'filters' => array(
+                    0 => 'search',
+                    1 => 'post_type',
+                ),
+                'return_format' => 'object',
+                'min' => 0,
+                'max' => 3, // Máximo 3 productos
             ),
 
         ),

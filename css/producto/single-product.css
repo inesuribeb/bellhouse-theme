@@ -6,6 +6,9 @@
     width: 100%;
     background-color: var(--color-background);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
 }
 
 /* Info del producto */

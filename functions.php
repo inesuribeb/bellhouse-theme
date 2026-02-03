@@ -1112,7 +1112,7 @@ function bellhouse_proyecto_single_styles()
 {
     if (is_singular('proyectos')) {
         wp_enqueue_style('bellhouse-proyecto-single', get_stylesheet_directory_uri() . '/css/proyecto/proyecto-single.css', array(), '1.0');
-        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.0');
+        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.2');
         wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), '1.0', true);
         wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), '1.0', true); // ⭐ NUEVO
     }
@@ -1231,6 +1231,7 @@ function bellhouse_producto_single_styles()
     if (is_product()) {
         wp_enqueue_style('bellhouse-producto-single', get_stylesheet_directory_uri() . '/css/producto/single-product.css', array(), '1.0');
         wp_enqueue_style('bellhouse-producto-detalles', get_stylesheet_directory_uri() . '/css/producto/single-product2.css', array(), '1.0');
+        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.0');
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_producto_single_styles');

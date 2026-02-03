@@ -188,9 +188,11 @@
 
 .shop-card-hover-title {
     font-family: var(--font-texts);
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-family: var(--font-serif);
+    font-size: 26px;
+    /* font-weight: 600; */
+    /* text-transform: uppercase; */
+    font-weight: 200;
     letter-spacing: -0.5px;
     color: var(--color-dark);
     margin: 0 0 4px 0;
