@@ -41,7 +41,8 @@ echo do_shortcode($header_content);
         <?php include(get_stylesheet_directory() . '/components/blog/imagen-final.php'); ?>
         
         <!-- Otras entradas (lo haremos después) -->
-        
+        <?php include(get_stylesheet_directory() . '/components/blog/otras-entradas.php'); ?>
+
     <?php endwhile; endif; ?>
 
 </main>
