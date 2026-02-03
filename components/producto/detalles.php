@@ -55,6 +55,9 @@ $a_medida = get_field('a_medida');
         <?php endforeach; ?>
     </nav>
 
+    <!-- URL del producto para el carrito -->
+    <input type="hidden" name="product_url" value="<?php echo esc_url($product->get_permalink()); ?>" />
+
     <!-- Nombre del producto -->
     <h1 class="product-name"><?php echo esc_html($product_name); ?></h1>
 
@@ -166,8 +169,8 @@ $a_medida = get_field('a_medida');
                                         data-attribute_name="attribute_<?php echo $sanitized_name; ?>" value="">
 
                                     <!-- ⭐ OPCIÓN "CUALQUIERA" -->
-                                    <button type="button" class="color-swatch color-swatch-any" data-value=""
-                                        data-color="cualquiera" title="Cualquiera">
+                                    <button type="button" class="color-swatch color-swatch-any" data-value="" data-color="cualquiera"
+                                        title="Cualquiera">
                                         <span class="color-swatch-inner">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
@@ -267,49 +270,50 @@ $a_medida = get_field('a_medida');
 
         <!-- Producto simple -->
         <?php
-    // ⭐ Mostrar color del producto simple (solo visual, sin funcionalidad)
-    $simple_color_attr = null;
-    foreach ($attributes as $attribute) {
-        $attr_name = $attribute->get_name();
-        if (stripos($attr_name, 'color') !== false) {
-            $simple_color_attr = $attribute;
-            break;
-        }
-    }
-    
-    if ($simple_color_attr):
-        $color_values = array();
-        if ($simple_color_attr->is_taxonomy()) {
-            $terms = wc_get_product_terms($product->get_id(), $simple_color_attr->get_name(), array('fields' => 'names'));
-            if (!is_wp_error($terms) && !empty($terms)) {
-                $color_values = $terms;
+        // ⭐ Mostrar color del producto simple (solo visual, sin funcionalidad)
+        $simple_color_attr = null;
+        foreach ($attributes as $attribute) {
+            $attr_name = $attribute->get_name();
+            if (stripos($attr_name, 'color') !== false) {
+                $simple_color_attr = $attribute;
+                break;
             }
-        } else {
-            $color_values = $simple_color_attr->get_options();
         }
-        
-        if (!empty($color_values)):
-    ?>
-        <div class="color-swatches-wrapper" style="margin-bottom: 30px;">
-            <!-- <label class="variation-label">Color:</label> -->
-            <div class="color-swatches">
-                <?php foreach ($color_values as $color): ?>
-                    <div class="color-swatch" data-color="<?php echo esc_attr(strtolower($color)); ?>" title="<?php echo esc_attr(ucfirst($color)); ?>">
-                        <span class="color-swatch-inner"></span>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    <?php 
-        endif;
-    endif;
-    ?>
-    
-    <form class="cart"
-        action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
-        method="post" enctype='multipart/form-data'>
 
-        <div class="product-add-to-cart">
+        if ($simple_color_attr):
+            $color_values = array();
+            if ($simple_color_attr->is_taxonomy()) {
+                $terms = wc_get_product_terms($product->get_id(), $simple_color_attr->get_name(), array('fields' => 'names'));
+                if (!is_wp_error($terms) && !empty($terms)) {
+                    $color_values = $terms;
+                }
+            } else {
+                $color_values = $simple_color_attr->get_options();
+            }
+
+            if (!empty($color_values)):
+                ?>
+                <div class="color-swatches-wrapper" style="margin-bottom: 30px;">
+                    <!-- <label class="variation-label">Color:</label> -->
+                    <div class="color-swatches">
+                        <?php foreach ($color_values as $color): ?>
+                            <div class="color-swatch" data-color="<?php echo esc_attr(strtolower($color)); ?>"
+                                title="<?php echo esc_attr(ucfirst($color)); ?>">
+                                <span class="color-swatch-inner"></span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php
+            endif;
+        endif;
+        ?>
+
+        <form class="cart"
+            action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
+            method="post" enctype='multipart/form-data'>
+
+            <div class="product-add-to-cart">
                 <?php
                 woocommerce_quantity_input(array(
                     'min_value' => 1,

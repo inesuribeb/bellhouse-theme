@@ -35,6 +35,7 @@ $es_rebajado = $product->is_on_sale();
         <!-- Imagen -->
         <div class="product-card__image">
             
+            <!-- ⭐ NUEVO: Etiquetas -->
             <?php if ($es_novedad || $es_rebajado): ?>
                 <div class="product-card__badges">
                     <?php if ($es_novedad): ?>
@@ -64,17 +65,8 @@ $es_rebajado = $product->is_on_sale();
                 <h3 class="product-card__title"><?php echo esc_html($product_title); ?></h3>
                 <div class="product-card__price"><?php echo $product_price; ?></div>
             </div>
+            <button class="product-card__cta">COMPRAR</button>
         </div>
 
     </a>
-
-    <!-- ⭐ Botón fuera del enlace -->
-    <button class="product-card__cta" 
-            data-product-id="<?php echo $product_id; ?>"
-            data-product-name="<?php echo esc_attr($product_title); ?>"
-            data-product-url="<?php echo esc_url($product_link); ?>"
-            data-product-image="<?php echo esc_url($image_url); ?>"
-            data-product-price="<?php echo esc_attr($product->get_price()); ?>">
-        COMPRAR
-    </button>
 </article>

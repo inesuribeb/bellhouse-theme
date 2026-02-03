@@ -135,7 +135,7 @@ defined('ABSPATH') || exit;
         }
     endwhile;
     ?>
-
+ 
     <?php
     get_footer();
     ?>

@@ -2,19 +2,34 @@
    MODAL FILTROS - OVERLAY
 ======================================== */
 
-.filtrar-modal {
+/* .filtrar-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10000; /* ⭐ Por encima del header */
+    z-index: 10000; 
     display: none;
     pointer-events: none;
 }
 
 .filtrar-modal.active {
     display: block;
+    pointer-events: auto;
+} */
+.filtrar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.filtrar-modal.active {
+    visibility: visible;
     pointer-events: auto;
 }
 

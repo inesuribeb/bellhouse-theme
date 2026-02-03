@@ -162,6 +162,9 @@ $email_network = get_field('footer_email_network', $footer_id);
     </svg>
 </a>
 
+<!-- Modal Carrito (disponible en todas las páginas) -->
+<?php include(get_stylesheet_directory() . '/components/producto/modal-carrito.php'); ?>
+
 <?php wp_footer(); ?>
 </body>
 

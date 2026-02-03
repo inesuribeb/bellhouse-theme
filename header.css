@@ -477,3 +477,36 @@ body.single-proyectos .fixed-header.en-hero:hover .custom-logo {
         height: auto;
     }
 }
+
+
+
+/* ========================================
+   CART BADGE
+======================================== */
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    font-family: var(--font-texts);
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Ocultar badge cuando tiene 0 productos */
+.cart-badge.hidden {
+    display: none;
+}
