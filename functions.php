@@ -278,6 +278,16 @@ if (function_exists('acf_add_local_field_group')):
                 'type' => 'textarea',
                 'rows' => 3,
             ),
+                // Subtítulo
+            array(
+                'key' => 'field_subtitulo',
+                'label' => 'Subtítulo',
+                'name' => 'subtitulo',
+                'type' => 'text',
+                'instructions' => 'Subtítulo que aparece debajo del título en la sección intro',
+                'default_value' => 'Un h2',
+                'placeholder' => 'Un h2',
+            ),
             // Intro
             array(
                 'key' => 'field_intro',
@@ -414,7 +424,7 @@ if (function_exists('acf_add_local_field_group')):
                 'return_format' => 'array',
                 'preview_size' => 'thumbnail',
             ),
-                // Shop the Look - Productos relacionados
+            // Shop the Look - Productos relacionados
             array(
                 'key' => 'field_shop_the_look',
                 'label' => 'Shop the Look - Productos',

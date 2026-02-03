@@ -1,6 +1,7 @@
 <?php
 // Obtener campos ACF
 $titulo = get_the_title();
+$subtitulo = get_field('subtitulo');
 $intro = get_field('intro');
 $quote = get_field('quote');
 $img_vertical = get_field('img_vertical');
@@ -10,15 +11,15 @@ $img_horizontal = get_field('img_horizontal');
 <section class="project-intro">
     <div class="intro-container">
         
-        <!-- Columna izquierda: Título e intro -->
+        <!-- Columna izquierda: Subtítulo e intro -->
         <div class="intro-left">
-            <?php if ($titulo): ?>
-                <h1 class="intro-titulo"><?php echo esc_html($titulo); ?></h1>
+            <?php if ($subtitulo): ?>
+                <h2 class="intro-titulo"><?php echo esc_html($subtitulo); ?></h2>
             <?php endif; ?>
             
         </div>
         
-        <!-- Columna derecha: Vacía (solo para layout) -->
+        <!-- Columna derecha -->
         <div class="intro-right">
         <?php if ($intro): ?>
                 <div class="intro-texto">
