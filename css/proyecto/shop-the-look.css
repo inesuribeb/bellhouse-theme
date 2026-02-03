@@ -149,6 +149,7 @@
     font-weight: 500;
     letter-spacing: -0.5px;
     color: var(--color-dark);
+    text-transform: uppercase;
 }
 
 .shop-card-arrow {
