@@ -133,13 +133,15 @@
 
 .intro-titulo {
     font-family: var(--font-serif);
-    font-size: 56px;
+    /* font-size: 56px; */
+    font-size: 50px;
+
     letter-spacing: -1px;
     font-weight: 100;
     line-height: 0.9;
     margin: 0;
     color: var(--color-dark);
-    width: 70%;
+    width: 80%;
 }
 
 .intro-texto {
@@ -230,8 +232,8 @@
     .intro-titulo {
         display: flex;
         align-items: center;
-        height: 10vh; /* ⭐ Más alto que móvil (15vh) */
-        font-size: 50px;
+        /* height: 10vh;  */
+        font-size: 40px;
         line-height: 0.95;
     }
     
@@ -302,9 +304,12 @@
         /* justify-content: flex-start;
         align-self: center; */
         align-items: center; 
-        height: 15vh;
+        /* height: 15vh; */
         font-size: 46px;
         line-height: 1;
+        width:100%;
+        padding: 40px 0px 20px 0px;
+
     }
     
     .intro-texto {
@@ -356,7 +361,10 @@
     }
     
     .intro-titulo {
-        font-size: 46px;
+        font-size: 40px;
+        width:100%;
+        padding: 40px 0px 20px 0px;
+
     }
     
     .intro-texto {
