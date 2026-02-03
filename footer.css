@@ -10,6 +10,10 @@
     height: 100vh;
 }
 
+body.page-id-70 .site-footer {
+    background-color: var(--color-corporative);
+}
+
 /* Contenedor principal */
 .footer-content {
     display: flex;

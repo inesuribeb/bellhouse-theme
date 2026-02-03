@@ -129,13 +129,21 @@
     .home-portada {
         padding: 0px;
         width: 100%;
-
     }
     
     .portada-cards {
         flex-direction: column;
     }
     
+    .portada-titulo {
+        left: 0;
+        right: 0;
+        transform: translateY(-60%);
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
     .portada-titulo h1 {
         font-size: 46px;
         width: 100%;

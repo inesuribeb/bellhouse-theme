@@ -59,7 +59,18 @@
         letter-spacing: 2.5px;
         font-weight: 500;
         padding-right: 0px;
+
+        color: var(--color-dark);
+        /* ← Añade esto */
+        -webkit-appearance: none;
+        /* ← Y esto */
+        appearance: none;
         /* align-self: right; */
+    }
+
+    .mobile-menu-toggle span {
+        color: var(--color-dark);
+        -webkit-text-fill-color: var(--color-dark);
     }
 
     /* Menu overlay */
@@ -362,5 +373,41 @@
     /* Al abrir menú → fondo sólido */
     .mobile-header-wrapper.header-over-video.menu-open {
         background-color: var(--color-background) !important;
+    }
+}
+
+
+
+/* ========================================
+   HEADER MOBILE EN PROYECTOS (solo en hero)
+======================================== */
+
+@media (max-width: 1024px) {
+    .mobile-header-wrapper.en-hero {
+        background-color: transparent !important;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-header-wrapper.en-hero .mobile-menu-toggle {
+        color: var(--color-light) !important;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-header-wrapper.en-hero .mobile-logo img {
+        filter: brightness(0) invert(1);
+        transition: filter 0.3s ease;
+    }
+
+    /* Al abrir menú mientras está en hero → fondo sólido */
+    .mobile-header-wrapper.en-hero.menu-open {
+        background-color: var(--color-background) !important;
+    }
+
+    .mobile-header-wrapper.en-hero.menu-open .mobile-menu-toggle {
+        color: var(--color-dark) !important;
+    }
+
+    .mobile-header-wrapper.en-hero.menu-open .mobile-logo img {
+        filter: none !important;
     }
 }

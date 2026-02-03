@@ -68,12 +68,23 @@
 
 
 .home-tienda-texto {
-    font-family: var(--font-texts);
+    /* font-family: var(--font-texts);
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-dark);
+    margin: 0; */
+
+    font-family: var(--font-texts);
+    font-size: 20px;
+    line-height: 1.1;
+    color: var(--color-dark);
+    /* color: red; */
     margin: 0;
+    font-weight: 200;
+    letter-spacing: -1px;
+    /* width: 70%; */
+    /* margin-bottom: 40px; */
 }
 
 /* ========================================
