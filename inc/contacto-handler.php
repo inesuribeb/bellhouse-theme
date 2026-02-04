@@ -23,7 +23,7 @@ function procesar_formulario_contacto()
     $mensaje_usuario = sanitize_textarea_field($_POST['mensaje'] ?? '');
 
     // Email de destino
-    $email_destino = 'inesuribeb@gmail.com';
+    $email_destino = 'estudio@inesuribe.es';
 
     // Asunto del email
     $asunto = 'Nuevo contacto desde la web - ' . $nombre . ' ' . $apellido;
