@@ -195,10 +195,10 @@ body.single-post .fixed-header {
 
 /* Título DEBAJO de la imagen */
 .menu-card-title {
-    font-family: 'Sweet Sans Pro', sans-serif;
+    font-family: var(--font-interactive);
     font-size: 15px;
     color: var(--color-dark);
-    font-weight: 500;
+    font-weight: 700;
     padding: 10px 0;
     text-align: left;
 }
