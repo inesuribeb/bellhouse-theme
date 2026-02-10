@@ -22,6 +22,8 @@
     display: flex;
     align-items: center;
     padding-bottom: 30px;
+    font-weight: 600;
+
 }
 
 .product-breadcrumb a {
@@ -179,7 +181,7 @@ form.variations_form .woocommerce-variation-price {
     padding: 12px 30px;
     font-family: var(--font-interactive);
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     /* letter-spacing: 1px; */
     background-color: var(--color-chocolate);
@@ -233,7 +235,7 @@ form.variations_form .woocommerce-variation-price {
     padding: 12px 30px;
     font-family: var(--font-interactive);
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     background-color: var(--color-chocolate);

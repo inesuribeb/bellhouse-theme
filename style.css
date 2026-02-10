@@ -45,9 +45,17 @@ html {
     --color-light-grey: #E9E7E6;
     
     /* Fuentes */
-    --font-interactive: 'Sweet Sans Pro', sans-serif;
+    /* --font-interactive: 'gotham', sans-serif; */
+    /* --font-interactive: 'Sweet Sans Pro', sans-serif; */
+    --font-interactive: 'sweet-sans-pro', sans-serif;
     --font-serif: 'Editors Note', serif;
     --font-texts: 'Acumin', sans-serif;
+    /* --font-arboria: 'arboria', sans-serif; */
+    /* --font-interactive: 'commuters-sans', sans-serif; */
+    /* --font-interactive: 'brandon-grotesque', sans-serif; */
+
+
+
 
 
     /* ========================================

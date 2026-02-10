@@ -33,7 +33,7 @@
 .ordenar-label {
     font-family: var(--font-interactive);
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-dark);
@@ -47,5 +47,5 @@
 } */
 
 .ordenar-opcion:has(.ordenar-radio:checked) .ordenar-label {
-    font-weight: 500;
+    font-weight: 600;
 }

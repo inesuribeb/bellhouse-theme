@@ -93,7 +93,7 @@
 .filtrar-modal-tab {
     font-family: var(--font-interactive);
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-medium-grey);
@@ -109,7 +109,7 @@
 
 .filtrar-modal-tab.active {
     color: var(--color-dark);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .filtrar-modal-separator {
@@ -173,7 +173,7 @@
     flex: 1;
     font-family: var(--font-interactive);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     border: none;
