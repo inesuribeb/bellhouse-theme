@@ -289,25 +289,25 @@
         min-width: 350px;
     }
     
-    /* .shop-card-box {
+    .shop-card-box {
         width: 70%;
     }
     
     .shop-card-box::before {
         height: 100% !important; 
         background: #f5f3f085 !important; 
-    } */
-    .shop-card-box {
+    }
+    /* .shop-card-box {
         width: 70%;
-        height: auto; /* añade esto */
-        aspect-ratio: unset; /* elimina el aspect-ratio */
+        height: auto; 
+        aspect-ratio: unset; 
     }
     
     .shop-card-box::before {
         height: 100% !important;
-        position: relative; /* cambia a relative */
+        position: relative; 
         display: block;
-    }
+    } */
     
     /* Ocultar label */
     .shop-card-label {
@@ -315,7 +315,12 @@
     }
     
     /* Mostrar contenido siempre */
-    .shop-card-hover-content {
+    /* .shop-card-hover-content {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    } */
+    .shop-card-hover-content,
+    .shop-card-box:hover .shop-card-hover-content {
         opacity: 1 !important;
         pointer-events: auto !important;
     }
