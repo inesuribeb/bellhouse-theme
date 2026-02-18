@@ -1118,14 +1118,25 @@ add_action('wp_enqueue_scripts', 'bellhouse_contacto_styles');
 require_once get_stylesheet_directory() . '/inc/contacto-handler.php';
 
 // Cargar CSS de proyecto single
+// function bellhouse_proyecto_single_styles()
+// {
+//     if (is_singular('proyectos')) {
+//         wp_enqueue_style('bellhouse-proyecto-single', get_stylesheet_directory_uri() . '/css/proyecto/proyecto-single.css', array(), '1.0');
+//         wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.2');
+//         wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), '1.0', true);
+//         wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), '1.0', true); // ⭐ NUEVO
+//         wp_enqueue_script('bellhouse-proyecto-header', get_stylesheet_directory_uri() . '/js/proyecto-header.js', array(), '1.0', true);
+//     }
+// }
+// add_action('wp_enqueue_scripts', 'bellhouse_proyecto_single_styles');
 function bellhouse_proyecto_single_styles()
 {
     if (is_singular('proyectos')) {
-        wp_enqueue_style('bellhouse-proyecto-single', get_stylesheet_directory_uri() . '/css/proyecto/proyecto-single.css', array(), '1.0');
-        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.2');
-        wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), '1.0', true);
-        wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), '1.0', true); // ⭐ NUEVO
-        wp_enqueue_script('bellhouse-proyecto-header', get_stylesheet_directory_uri() . '/js/proyecto-header.js', array(), '1.0', true);
+        wp_enqueue_style('bellhouse-proyecto-single', get_stylesheet_directory_uri() . '/css/proyecto/proyecto-single.css', array(), filemtime(get_stylesheet_directory() . '/css/proyecto/proyecto-single.css'));
+        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), filemtime(get_stylesheet_directory() . '/css/proyecto/shop-the-look.css'));
+        wp_enqueue_script('bellhouse-proyecto-slider', get_stylesheet_directory_uri() . '/js/proyecto-slider.js', array(), filemtime(get_stylesheet_directory() . '/js/proyecto-slider.js'), true);
+        wp_enqueue_script('bellhouse-proyecto-hero', get_stylesheet_directory_uri() . '/js/proyecto-hero.js', array(), filemtime(get_stylesheet_directory() . '/js/proyecto-hero.js'), true);
+        wp_enqueue_script('bellhouse-proyecto-header', get_stylesheet_directory_uri() . '/js/proyecto-header.js', array(), filemtime(get_stylesheet_directory() . '/js/proyecto-header.js'), true);
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_proyecto_single_styles');
@@ -1231,25 +1242,30 @@ function bellhouse_producto_scripts()
         wp_enqueue_script('bellhouse-producto-galeria', get_stylesheet_directory_uri() . '/js/producto-galeria.js', array('jquery'), '1.0', true);
         wp_enqueue_script('bellhouse-producto-variaciones', get_stylesheet_directory_uri() . '/js/producto-variaciones.js', array('jquery', 'wc-add-to-cart-variation'), '1.0', true);
         wp_enqueue_script('bellhouse-producto-scroll', get_stylesheet_directory_uri() . '/js/producto-scroll.js', array(), '1.0', true);
-        // ⭐ CAMBIO: Ahora depende de producto-variaciones
         wp_enqueue_script('bellhouse-producto-acordeones', get_stylesheet_directory_uri() . '/js/producto-acordeones.js', array('jquery', 'bellhouse-producto-variaciones'), '1.0', true);
         wp_enqueue_script('bellhouse-producto-header', get_stylesheet_directory_uri() . '/js/producto-header.js', array(), '1.0', true);
-        // wp_enqueue_script('bellhouse-modal-carrito', get_stylesheet_directory_uri() . '/js/modal-carrito.js', array(), '1.0', true);
-        // wp_localize_script('bellhouse-modal-carrito', 'modalCarritoData', array(
-        //     'checkoutUrl' => esc_url(wc_get_checkout_url()),
-        // ));
+
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_producto_scripts');
 
 // Cargar CSS de producto single
+// function bellhouse_producto_single_styles()
+// {
+//     if (is_product()) {
+//         wp_enqueue_style('bellhouse-producto-single', get_stylesheet_directory_uri() . '/css/producto/single-product.css', array(), '1.0');
+//         wp_enqueue_style('bellhouse-producto-detalles', get_stylesheet_directory_uri() . '/css/producto/single-product2.css', array(), '1.0');
+//         wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.0');
+//     }
+// }
+// add_action('wp_enqueue_scripts', 'bellhouse_producto_single_styles');
 function bellhouse_producto_single_styles()
 {
     if (is_product()) {
-        wp_enqueue_style('bellhouse-producto-single', get_stylesheet_directory_uri() . '/css/producto/single-product.css', array(), '1.0');
-        wp_enqueue_style('bellhouse-producto-detalles', get_stylesheet_directory_uri() . '/css/producto/single-product2.css', array(), '1.0');
-        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), '1.0');
-        // wp_enqueue_style('bellhouse-modal-carrito', get_stylesheet_directory_uri() . '/css/producto/modal-carrito.css', array(), '1.0');
+        wp_enqueue_style('bellhouse-producto-single', get_stylesheet_directory_uri() . '/css/producto/single-product.css', array(), filemtime(get_stylesheet_directory() . '/css/producto/single-product.css'));
+        wp_enqueue_style('bellhouse-producto-detalles', get_stylesheet_directory_uri() . '/css/producto/single-product2.css', array(), filemtime(get_stylesheet_directory() . '/css/producto/single-product2.css'));
+        wp_enqueue_style('bellhouse-shop-the-look', get_stylesheet_directory_uri() . '/css/proyecto/shop-the-look.css', array(), filemtime(get_stylesheet_directory() . '/css/proyecto/shop-the-look.css'));
+        // wp_enqueue_style('bellhouse-modal-carrito', get_stylesheet_directory_uri() . '/css/producto/modal-carrito.css', array(), filemtime(get_stylesheet_directory() . '/css/producto/modal-carrito.css'));
     }
 }
 add_action('wp_enqueue_scripts', 'bellhouse_producto_single_styles');
