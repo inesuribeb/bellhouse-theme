@@ -247,8 +247,7 @@
    RESPONSIVE
 ======================================== */
 
-/* Scroll horizontal en pantallas menores de 1400px */
-@media (max-width: 1400px) {
+/* @media (max-width: 1400px) {
     .shop-grid {
         overflow-x: auto;
         overflow-y: hidden;
@@ -268,7 +267,6 @@
     }
 }
 
-/* Tablet y móvil: siempre expandido */
 @media (max-width: 1024px) {
     .shop-the-look {
         padding: 80px 20px;
@@ -297,30 +295,12 @@
         height: 100% !important; 
         background: #f5f3f085 !important; 
     }
-    /* .shop-card-box {
-        width: 70%;
-        height: auto; 
-        aspect-ratio: unset; 
-    }
     
-    .shop-card-box::before {
-        height: 100% !important;
-        position: relative; 
-        display: block;
-    } */
-    
-    /* Ocultar label */
     .shop-card-label {
         display: none;
     }
     
-    /* Mostrar contenido siempre */
-    /* .shop-card-hover-content {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    } */
-    .shop-card-hover-content,
-    .shop-card-box:hover .shop-card-hover-content {
+    .shop-card-hover-content {
         opacity: 1 !important;
         pointer-events: auto !important;
     }
@@ -398,5 +378,156 @@
     
     .shop-card-hover-content {
         padding:  20px;
+    }
+} */
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1400px) {
+    .shop-grid {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 20px;
+    }
+    
+    .shop-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .shop-card {
+        flex: 0 0 400px;
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shop-the-look {
+        padding: 80px 20px;
+    }
+    
+    .shop-title {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .shop-grid {
+        gap: 15px;
+        padding: 0 20px 20px 20px;
+    }
+    
+    .shop-card {
+        flex: 0 0 350px;
+        min-width: 350px;
+    }
+
+    /* El box ocupa toda la imagen */
+    .shop-card-box {
+        width: 70%;
+        aspect-ratio: unset;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto;
+        /* Altura explícita basada en la card */
+        height: 70%;
+    }
+    
+    .shop-card-box::before {
+        height: 100% !important;
+        background: #f5f3f085 !important;
+    }
+    
+    .shop-card-label {
+        display: none;
+    }
+    
+    .shop-card-hover-content,
+    .shop-card-box:hover .shop-card-hover-content {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        padding: 20px;
+    }
+    
+    .shop-card-hover-title {
+        font-size: 16px;
+    }
+    
+    .shop-card-hover-subtitle {
+        font-size: 12px;
+    }
+    
+    .shop-card-hover-image {
+        max-height: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .shop-the-look {
+        padding: 60px 0px;
+    }
+    
+    .shop-title {
+        font-size: 40px;
+        margin-bottom: 60px;
+    }
+    
+    .shop-grid {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .shop-card {
+        flex: 0 0 250px;
+        min-width: 250px;
+    }
+    
+    .shop-card-box {
+        width: 70%;
+        height: 65%;
+    }
+    
+    .shop-card-hover-title {
+        font-size: 15px;
+    }
+    
+    .shop-card-hover-subtitle {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    .shop-card-hover-image {
+        max-height: 40%;
+        margin-bottom: 15px;
+    }
+    
+    .shop-card-hover-button {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-title {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .shop-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+    }
+    
+    .shop-card-box {
+        width: 70%;
+        height: 65%;
+        padding: 0;
+    }
+    
+    .shop-card-hover-content {
+        padding: 20px;
     }
 }
