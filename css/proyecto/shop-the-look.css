@@ -253,17 +253,17 @@
         overflow-x: auto;
         overflow-y: hidden;
         scroll-behavior: smooth;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
         padding-bottom: 20px;
     }
     
     .shop-grid::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+        display: none; 
     }
     
     .shop-card {
-        flex: 0 0 400px; /* Ancho fijo para cada card */
+        flex: 0 0 400px;
         min-width: 400px;
     }
 }
@@ -289,14 +289,24 @@
         min-width: 350px;
     }
     
-    /* Siempre expandido en tablet */
-    .shop-card-box {
+    /* .shop-card-box {
         width: 70%;
     }
     
     .shop-card-box::before {
-        height: 100% !important; /* Siempre expandido */
-        background: #f5f3f085 !important; /* Siempre semitransparente */
+        height: 100% !important; 
+        background: #f5f3f085 !important; 
+    } */
+    .shop-card-box {
+        width: 70%;
+        height: auto; /* añade esto */
+        aspect-ratio: unset; /* elimina el aspect-ratio */
+    }
+    
+    .shop-card-box::before {
+        height: 100% !important;
+        position: relative; /* cambia a relative */
+        display: block;
     }
     
     /* Ocultar label */
