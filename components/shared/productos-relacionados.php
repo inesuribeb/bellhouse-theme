@@ -58,7 +58,7 @@ if ($productos && count($productos) > 0):
 
                             <!-- Cuadro expandible -->
                             <div class="shop-card-box">
-                                <div class="shop-card-blur"></div> <!-- 👈 añade esto -->
+                                <!-- <div class="shop-card-blur"></div> -->
 
                                 <!-- Label (visible sin hover) -->
                                 <div class="shop-card-label">
