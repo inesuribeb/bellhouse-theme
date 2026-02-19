@@ -437,15 +437,23 @@
     }
 
     /* El box ocupa toda la imagen */
-    .shop-card-box {
+    /* .shop-card-box {
         width: 70%;
         aspect-ratio: unset;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         bottom: auto;
-        /* Altura explícita basada en la card */
         height: 70%;
+    } */
+    .shop-card-box {
+        width: 70%;
+        aspect-ratio: 1/1; /* vuelve a ser cuadrado */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto;
+        height: auto; /* quita el height fijo */
     }
     
     /* .shop-card-box::before {
@@ -473,7 +481,7 @@
     }
     
     .shop-card-hover-title {
-        font-size: 16px;
+        font-size: 22px;
     }
     
     .shop-card-hover-subtitle {
@@ -529,7 +537,7 @@
     }
     
     .shop-card-hover-title {
-        font-size: 15px;
+        font-size: 20px;
     }
     
     .shop-card-hover-subtitle {
