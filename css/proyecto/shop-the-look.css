@@ -74,6 +74,10 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.shop-card-blur {
+    display: none; /* oculto en desktop */
+}
+
 .shop-card-box::before {
     content: '';
     position: absolute;
@@ -478,6 +482,25 @@
     .shop-card-hover-image {
         max-height: 45%;
     }
+
+    .shop-card-blur {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #f5f3f085;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 15px;
+        z-index: 1;
+    }
+    
+    .shop-card-hover-content {
+        z-index: 2; /* por encima del blur */
+    }
+
 }
 
 @media (max-width: 768px) {
