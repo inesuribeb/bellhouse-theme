@@ -444,9 +444,16 @@
         height: 70%;
     }
     
+    /* .shop-card-box::before {
+        height: 100% !important;
+        background: #f5f3f085 !important;
+    } */
+
     .shop-card-box::before {
         height: 100% !important;
         background: #f5f3f085 !important;
+        backdrop-filter: none !important; /* quita el blur en móvil */
+        -webkit-backdrop-filter: none !important;
     }
     
     .shop-card-label {
