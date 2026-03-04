@@ -24,25 +24,11 @@
     ?>
 
     <main class="page-home">
-
-        <!-- Portada (con lógica condicional) -->
+        
+        <!-- Portada -->
         <?php
         $tienda_visible = get_theme_mod('tienda_visible', false);
-        $portada_tipo = get_field('portada_tipo');
-
-        // Si tienda NO está activa, forzar portada sin tienda
-        if (!$tienda_visible) {
-            $portada_tipo = 'sin_tienda';
-        }
-
-        // Renderizar según tipo
-        if ($portada_tipo === 'sin_tienda') {
-            // Mostrar portada pantalla completa
-            include(get_stylesheet_directory() . '/components/home/portada-sin-tienda.php');
-        } else {
-            // Mostrar portada con cards (default)
-            include(get_stylesheet_directory() . '/components/home/portada.php');
-        }
+        include(get_stylesheet_directory() . '/components/home/portada.php');
         ?>
 
         <!-- Intro -->

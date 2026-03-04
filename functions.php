@@ -1302,30 +1302,28 @@ function bellhouse_custom_shop_template($template)
 // CUSTOMIZER: Mostrar/Ocultar Tienda
 // ========================================
 
-function bellhouse_customizer_tienda($wp_customize)
-{
-    // Crear una nueva sección
-    $wp_customize->add_section('bellhouse_tienda_section', array(
-        'title' => 'Configuración de Tienda',
-        'priority' => 30,
-        'description' => 'Activa o desactiva la visibilidad de la tienda en el sitio web.',
-    ));
+// function bellhouse_customizer_tienda($wp_customize)
+// {
+//     $wp_customize->add_section('bellhouse_tienda_section', array(
+//         'title' => 'Configuración de Tienda',
+//         'priority' => 30,
+//         'description' => 'Activa o desactiva la visibilidad de la tienda en el sitio web.',
+//     ));
 
-    // Añadir el control (checkbox)
-    $wp_customize->add_setting('tienda_visible', array(
-        'default' => false,
-        'transport' => 'refresh', // 'refresh' para ver cambios al guardar
-        'sanitize_callback' => 'bellhouse_sanitize_checkbox',
-    ));
+//     $wp_customize->add_setting('tienda_visible', array(
+//         'default' => false,
+//         'transport' => 'refresh', 
+//         'sanitize_callback' => 'bellhouse_sanitize_checkbox',
+//     ));
 
-    $wp_customize->add_control('tienda_visible', array(
-        'label' => 'Mostrar Tienda en la Web',
-        'description' => 'Activa esta opción cuando la tienda esté lista para mostrarse al público.',
-        'section' => 'bellhouse_tienda_section',
-        'type' => 'checkbox',
-    ));
-}
-add_action('customize_register', 'bellhouse_customizer_tienda');
+//     $wp_customize->add_control('tienda_visible', array(
+//         'label' => 'Mostrar Tienda en la Web',
+//         'description' => 'Activa esta opción cuando la tienda esté lista para mostrarse al público.',
+//         'section' => 'bellhouse_tienda_section',
+//         'type' => 'checkbox',
+//     ));
+// }
+// add_action('customize_register', 'bellhouse_customizer_tienda');
 
 // Función para sanitizar el checkbox
 function bellhouse_sanitize_checkbox($checked)
