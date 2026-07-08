@@ -158,6 +158,7 @@ if (function_exists('acf_add_local_field_group')):
         //     'type' => 'text',
         // ),
 
+        
         // Texto 2
         // array(
         //     'key' => 'field_blog_texto_2',
