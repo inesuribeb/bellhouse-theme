@@ -157,8 +157,7 @@ if (function_exists('acf_add_local_field_group')):
         //     'name' => 'blog_subtitulo_2',
         //     'type' => 'text',
         // ),
-
-        
+  
         // Texto 2
         // array(
         //     'key' => 'field_blog_texto_2',
