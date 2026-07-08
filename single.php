@@ -27,15 +27,16 @@ echo do_shortcode($header_content);
         
         <!-- Hero -->
         <?php include(get_stylesheet_directory() . '/components/blog/hero.php'); ?>
-        
+        <!-- Secciones adicionales -->
+<?php include(get_stylesheet_directory() . '/components/blog/secciones.php'); ?>
         <!-- Text 1 -->
-        <?php include(get_stylesheet_directory() . '/components/blog/text1.php'); ?>
+        <!-- <?php include(get_stylesheet_directory() . '/components/blog/text1.php'); ?> -->
         
         <!-- Images -->
         <?php include(get_stylesheet_directory() . '/components/blog/images.php'); ?>
         
         <!-- Text 2 -->
-        <?php include(get_stylesheet_directory() . '/components/blog/text2.php'); ?>
+        <!-- <?php include(get_stylesheet_directory() . '/components/blog/text2.php'); ?> -->
         
         <!-- Imagen Final -->
         <?php include(get_stylesheet_directory() . '/components/blog/imagen-final.php'); ?>
